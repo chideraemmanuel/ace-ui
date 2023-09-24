@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyledToggleButton,
   StyledToggleContainer,
@@ -56,6 +56,10 @@ interface Props {
     unchecked: string;
   };
   readOnly: boolean;
+  state: {
+    isChecked: boolean;
+    setIsChecked: React.Dispatch<React.SetStateAction<boolean>>;
+  };
 }
 
 const Toggle: React.FC<Props> = ({
@@ -66,7 +70,12 @@ const Toggle: React.FC<Props> = ({
   toggleColor,
   focusRing,
   readOnly,
+  state,
 }) => {
+  // const [isChecked, setIsChecked] = useState(false);
+
+  // const { isChecked, setIsChecked } = state;
+
   return (
     <StyledToggleContainer>
       <StyledToggleButton
@@ -76,7 +85,13 @@ const Toggle: React.FC<Props> = ({
         focusRing={focusRing}
         readOnly={readOnly}
       >
-        <input type="checkbox" name="checkbox" id="checkbox" />
+        <input
+          type="checkbox"
+          name="checkbox"
+          id="checkbox"
+          checked={state?.isChecked}
+          onChange={() => state?.setIsChecked((prev) => !prev)}
+        />
         <label htmlFor="checkbox">
           {/* <span className="circle"></span> */}
           <svg
@@ -97,9 +112,9 @@ const Toggle: React.FC<Props> = ({
                 width="26"
                 height="26"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
