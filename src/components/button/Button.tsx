@@ -1,11 +1,14 @@
 import React from 'react';
-import './Button.scss';
+// import './Button.scss';
 import { FiCircle } from 'react-icons/fi';
+import { StyledButton, StyledButtonIcon } from './Button.styled';
+import { FaGoogle } from 'react-icons/fa';
 
 interface Props {
   // base
   tagType?: 'button' | 'a';
-  size?: 'small' | 'base' | 'medium' | 'large';
+  // size?: 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   href?: string;
   text: string;
 
@@ -13,8 +16,9 @@ interface Props {
   variant?: 'primary' | 'secondary';
   loading?: boolean;
   loaderPosition?: 'start' | 'end' | 'center';
-  tag?: boolean;
-  tagPosition?: 'start' | 'end' | 'center';
+  icon?: boolean;
+  iconSize?: string;
+  iconPosition?: 'start' | 'end' | 'center';
 
   // custom styling
   borderRadius?: string;
@@ -23,20 +27,22 @@ interface Props {
   paddingBottom?: string;
   paddingLeft?: string;
   paddingRight?: string;
-  backgroundColor?: string;
+  background?: string;
   color?: string;
   width?: string;
+  fontSize?: string;
 }
 
 const Button: React.FC<Props> = ({
   tagType = 'a',
   href = undefined,
   text,
-  size = 'base',
+  size = 'md',
   loading = false,
   loaderPosition = undefined,
-  tag = false,
-  tagPosition = undefined,
+  icon = false,
+  iconSize = undefined,
+  iconPosition = undefined,
   variant = 'primary',
   // custom styling
   borderRadius = undefined,
@@ -45,65 +51,45 @@ const Button: React.FC<Props> = ({
   paddingBottom = undefined,
   paddingLeft = undefined,
   paddingRight = undefined,
-  backgroundColor = undefined,
+  background = undefined,
   color = undefined,
   width = undefined,
+  fontSize = undefined,
   ...props
 }) => {
   return (
     <>
-      {tagType === 'button' ? (
-        <button
-          className={`button button-${size} button-${variant}`}
-          //   onClick={() => alert('yo!')}
-          style={{
-            flexDirection:
-              loaderPosition === 'start' || tagPosition === 'start'
-                ? 'row'
-                : 'row-reverse',
-            borderRadius,
-            padding,
-            paddingTop,
-            paddingBottom,
-            paddingLeft,
-            paddingRight,
-            backgroundColor,
-            color,
-            width,
-          }}
-          {...props}
-        >
-          {loading && !tag && <FiCircle />}
-          {tag && !loading && <span className="button__badge"></span>}
-          <span>{text}</span>
-        </button>
-      ) : (
-        <a
-          className={`button button-${size} button-${variant}`}
-          href={href}
-          //
-          style={{
-            flexDirection:
-              loaderPosition === 'start' || tagPosition === 'start'
-                ? 'row'
-                : 'row-reverse',
-            borderRadius,
-            padding,
-            paddingTop,
-            paddingBottom,
-            paddingLeft,
-            paddingRight,
-            backgroundColor,
-            color,
-            width,
-          }}
-          {...props}
-        >
-          {loading && !tag && <FiCircle />}
-          {tag && !loading && <span className="button__badge"></span>}
-          <span>{text}</span>
-        </a>
-      )}
+      <StyledButton
+        href="#"
+        {...props}
+        borderRadius={borderRadius}
+        padding={padding}
+        paddingTop={paddingTop}
+        paddingBottom={paddingBottom}
+        paddingLeft={paddingLeft}
+        paddingRight={paddingRight}
+        background={background}
+        color={color}
+        width={width}
+        fontSize={fontSize}
+        //
+        size={size}
+        loaderPosition={loaderPosition}
+        iconSize={iconSize}
+        iconPosition={iconPosition}
+      >
+        {loading && !icon && <FiCircle />}
+        {/* {icon && !loading && <span className="icon"></span>} */}
+        {icon && !loading && (
+          // <span className="icon">
+          //   <FaGoogle />
+          // </span>
+          <StyledButtonIcon>
+            <FaGoogle />
+          </StyledButtonIcon>
+        )}
+        <span>{text}</span>
+      </StyledButton>
     </>
   );
 };

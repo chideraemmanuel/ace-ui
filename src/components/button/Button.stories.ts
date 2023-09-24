@@ -13,28 +13,40 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Base: Story = {
   args: {
     text: 'Button',
-    size: 'base',
+    size: 'md',
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'small',
+    size: 'sm',
   },
 };
 
-export const Medium: Story = {
-  args: {
-    size: 'medium',
-  },
-};
+// export const Medium: Story = {
+//   args: {
+//     size: 'medium',
+//   },
+// };
 
 export const Large: Story = {
   args: {
-    size: 'large',
+    size: 'lg',
+  },
+};
+
+export const XLarge: Story = {
+  args: {
+    size: 'xl',
+  },
+};
+
+export const XXLarge: Story = {
+  args: {
+    size: '2xl',
   },
 };
 

@@ -11,24 +11,40 @@
   cursor: pointer;
   text-decoration: none;
 
-  &-small {
-    padding: var(--space-1) var(--space-3);
-    font-size: 13px;
+  &-sm {
+    // padding: var(--space-2) 0.88rem;
+    padding: var(--fluid-space-2) var(--fluid-space-3);
+    font-size: 0.875rem;
   }
 
-  &-base {
-    padding: var(--space-2) var(--space-4);
-    font-size: 16px;
+  // &-base {
+  //   padding: var(--space-2) var(--space-4);
+  //   // padding: var(--fluid-space-2) var(--fluid-space-4);
+  //   font-size: 16px;
+  // }
+
+  &-md {
+    // padding: 0.62 var(--space-4);
+    padding: var(--fluid-space-2) var(--fluid-space-4);
+    font-size: 0.875rem;
   }
 
-  &-medium {
-    padding: var(--space-3) var(--space-5);
-    font-size: 18px;
+  &-lg {
+    // padding: 0.62rem 1.12rem;
+    padding: var(--fluid-space-2) var(--fluid-space-5);
+    font-size: 1rem;
   }
 
-  &-large {
-    padding: var(--space-4) var(--space-6);
-    font-size: 20px;
+  &-xl {
+    // padding: var(--space-3) var(--space-5);
+    padding: var(--fluid-space-3) var(--fluid-space-5);
+    font-size: 1rem;
+  }
+
+  &-2xl {
+    padding: var(--space-4) 1.75rem;
+    padding: var(--fluid-space-4) var(--fluid-space-7);
+    font-size: 1.125rem;
   }
 
   &__badge {
