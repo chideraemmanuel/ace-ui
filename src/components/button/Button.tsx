@@ -7,15 +7,12 @@ import { FaGoogle } from 'react-icons/fa';
 interface Props {
   // base
   tagType?: 'button' | 'a';
-  // size?: 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl';
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   href?: string;
   text: string;
 
   //   variants
   variant?: 'primary' | 'secondary';
-  loading?: boolean;
-  loaderPosition?: 'start' | 'end' | 'center';
   icon?: boolean;
   iconSize?: string;
   iconPosition?: 'start' | 'end' | 'center';
@@ -23,67 +20,67 @@ interface Props {
   // custom styling
   borderRadius?: string;
   padding?: string;
-  paddingTop?: string;
-  paddingBottom?: string;
-  paddingLeft?: string;
-  paddingRight?: string;
   background?: string;
   color?: string;
   width?: string;
   fontSize?: string;
+  hover: {
+    background?: string;
+    color?: string;
+  };
+  focus: {
+    background?: string;
+    color?: string;
+    borderColor?: string;
+    borderWidth?: string;
+    borderStyle?: string;
+  };
+  disabled: boolean;
 }
 
 const Button: React.FC<Props> = ({
   tagType = 'a',
-  href = undefined,
+  href,
   text,
   size = 'md',
-  loading = false,
-  loaderPosition = undefined,
-  icon = false,
-  iconSize = undefined,
-  iconPosition = undefined,
+  icon,
+  iconSize,
+  iconPosition,
   variant = 'primary',
   // custom styling
-  borderRadius = undefined,
-  padding = undefined,
-  paddingTop = undefined,
-  paddingBottom = undefined,
-  paddingLeft = undefined,
-  paddingRight = undefined,
-  background = undefined,
-  color = undefined,
-  width = undefined,
-  fontSize = undefined,
+  borderRadius,
+  padding,
+  background,
+  color,
+  width,
+  fontSize,
+  hover,
+  focus,
+  disabled = false,
   ...props
 }) => {
   return (
     <>
       <StyledButton
-        href="#"
-        {...props}
+        href={tagType === 'a' ? href : undefined}
+        as={tagType}
+        variant={variant}
         borderRadius={borderRadius}
         padding={padding}
-        paddingTop={paddingTop}
-        paddingBottom={paddingBottom}
-        paddingLeft={paddingLeft}
-        paddingRight={paddingRight}
         background={background}
         color={color}
         width={width}
         fontSize={fontSize}
         //
         size={size}
-        loaderPosition={loaderPosition}
         iconSize={iconSize}
         iconPosition={iconPosition}
+        hover={hover}
+        focus={focus}
+        disabled={disabled}
+        {...props}
       >
-        {loading && !icon && <FiCircle />}
-        {/* {icon && !loading && <span className="icon"></span>} */}
-        {icon && !loading && (
-          // <span className="icon">
-          //   <FaGoogle />
-          // </span>
+        {icon && (
           <StyledButtonIcon>
             <FaGoogle />
           </StyledButtonIcon>
