@@ -10,22 +10,33 @@ import {
 } from './TextInput.styled';
 import { FiMail, FiInfo, FiLock } from 'react-icons/fi';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Tooltip from '../tooltip/Tooltip';
 
 interface Props {
   type: 'text' | 'email' | 'password' | 'card';
-  label?: string;
-  placeholder: string;
+  label?: {
+    text: string;
+    color: string;
+  };
+  placeholder?: {
+    text: string;
+    color: string;
+  };
   icon?: {
     active: boolean;
     icon: any;
+    color: string;
   };
-  helpIcon?: {
+  tip?: {
     active: boolean;
+    text: string;
     icon: any;
+    color: string;
   };
   hint?: {
     error: boolean;
-    message: string;
+    text: string;
+    color: string;
   };
   readOnly?: boolean;
   forgotPassword?: boolean;
@@ -54,10 +65,10 @@ const TextInput: React.FC<Props> = ({
   label,
   placeholder,
   icon,
-  helpIcon,
+  tip,
   hint,
-  readOnly = false,
-  forgotPassword = false,
+  readOnly,
+  forgotPassword,
   forgotPasswordAction,
 
   border,
@@ -84,7 +95,7 @@ const TextInput: React.FC<Props> = ({
   return (
     <>
       <StyledTextInputContainer htmlFor="input">
-        <StyledTextInputLabel>{label}</StyledTextInputLabel>
+        <StyledTextInputLabel {...label}>{label?.text}</StyledTextInputLabel>
         <StyledTextInput
           error={hint?.error}
           readOnly={readOnly}
@@ -97,7 +108,7 @@ const TextInput: React.FC<Props> = ({
         >
           <div>
             {icon?.active && (
-              <StyledTextInputIcon>
+              <StyledTextInputIcon color={icon.color}>
                 {!icon?.active ? undefined : type === 'text' ? (
                   icon.icon
                 ) : type === 'email' ? (
@@ -145,7 +156,8 @@ const TextInput: React.FC<Props> = ({
                   : type
               }
               id="input"
-              placeholder={placeholder}
+              placeholder={placeholder?.text}
+              placeholderStyles={placeholder}
               readOnly={readOnly}
               background={background}
               color={color}
@@ -157,8 +169,11 @@ const TextInput: React.FC<Props> = ({
 
           {/* INFO TOOLTIP */}
           {/* Only render when type is not password */}
-          {type !== 'password' && helpIcon?.active && (
+          {/* {type !== 'password' && helpIcon?.active && (
             <span className="help-icon">{helpIcon?.icon || <FiInfo />}</span>
+          )} */}
+          {type !== 'password' && tip?.active && tip?.text && (
+            <Tooltip trigger={tip?.icon || <FiInfo />}>{tip.text}</Tooltip>
           )}
 
           {/* PASSWORD TOGGLE */}
@@ -174,8 +189,8 @@ const TextInput: React.FC<Props> = ({
           )}
         </StyledTextInput>
 
-        <StyledTextInputHint error={hint?.error}>
-          <span>{hint?.message}</span>
+        <StyledTextInputHint {...hint}>
+          <span>{hint?.text}</span>
           {forgotPassword && forgotPasswordAction && (
             <div
               className="forgot-password"

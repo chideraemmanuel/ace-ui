@@ -10,18 +10,23 @@ export const StyledTextInputContainer = styled.label`
   gap: 0.375rem;
 `;
 
-export const StyledTextInputLabel = styled.span`
+interface LabelProps {
+  color?: string;
+}
+
+export const StyledTextInputLabel = styled.span<LabelProps>`
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 1.225rem */
   letter-spacing: -0.01263rem;
-  color: #101828;
+  /* color: #101828; */
+  color: ${({ color }) => color || '#101828'};
 `;
 
 interface InputProps {
   error?: boolean;
-  readOnly: boolean;
+  readOnly?: boolean;
 
   borderRadius?: string;
   border?: string;
@@ -123,7 +128,9 @@ interface InputFieldProps {
   background?: string;
   color: string;
   fontSize: string;
-  // placeholder
+  placeholderStyles?: {
+    color: string;
+  };
 }
 export const StyledTextInputField = styled.input<InputFieldProps>`
   font-size: ${({ fontSize }) => fontSize || '1rem'};
@@ -137,13 +144,14 @@ export const StyledTextInputField = styled.input<InputFieldProps>`
   padding: 0.625rem 0;
   background: ${({ background }) => background || '#fff'};
 
-  ::placeholder {
+  &::placeholder {
     font-size: ${({ fontSize }) => fontSize || '1rem'};
     font-style: normal;
     font-weight: 400;
     line-height: 140%; /* 1.4rem */
     letter-spacing: -0.01438rem;
-    color: #667085;
+    /* color: #; */
+    color: ${({ placeholderStyles }) => placeholderStyles?.color || '#667085'};
   }
 
   /* &:read-only {
@@ -161,14 +169,22 @@ export const StyledTextInputField = styled.input<InputFieldProps>`
     `}
 `;
 
-export const StyledTextInputIcon = styled.span`
+interface IconProps {
+  color?: string;
+}
+
+export const StyledTextInputIcon = styled.span<IconProps>`
   font-size: 1.25rem;
-  color: #667085;
-  line-height: 140%;
+  /* color: #667085; */
+  color: ${({ color }) => color || '#667085'};
+  /* line-height: 140%; */
+  display: flex;
+  align-items: center;
 `;
 
 interface HintProps {
   error?: boolean;
+  color?: string;
 }
 
 export const StyledTextInputHint = styled.div<HintProps>`
@@ -177,7 +193,8 @@ export const StyledTextInputHint = styled.div<HintProps>`
   justify-content: space-between;
 
   span {
-    color: #667085;
+    /* color: #667085; */
+    color: ${({ color }) => color || '#667085'};
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;

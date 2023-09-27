@@ -27,10 +27,13 @@ interface TextareaProps {
   background?: string;
   // padding:
   boxShadow?: string;
-  focusRing?: {
-    error: boolean;
-    borderColor: string;
+  focus?: {
+    focused: boolean;
+    border: string;
     boxShadowColor: string;
+  };
+  placeholderStyles?: {
+    color: string;
   };
 }
 
@@ -69,16 +72,16 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
     box-shadow: 0px 0px 0px 4px #f4ebff, 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   } */
 
-  &:hover {
-    border: 1px solid ${({ focusRing }) => focusRing?.borderColor || '#d6bbfb'};
-    box-shadow: ${({ focusRing }) =>
-      `0px 0px 0px 4px ${
-        focusRing?.boxShadowColor ? focusRing?.boxShadowColor : '#f4ebff'
-      } 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
+  &:hover,
+  &:focus {
+    border: ${({ focus }) => focus?.border || '1px solid #d6bbfb'};
+    box-shadow: 0px 0px 0px 4px
+      ${({ focus }) => focus?.boxShadowColor || '#f4ebff'};
   }
 
   &::placeholder {
-    color: #667085;
+    /* color: #667085; */
+    color: ${({ placeholderStyles }) => placeholderStyles?.color || '#667085'};
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;

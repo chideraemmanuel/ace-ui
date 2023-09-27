@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import {
   StyledTextarea,
   StyledTextareaContainer,
@@ -8,10 +8,13 @@ import {
 
 interface Props {
   label: string;
-  placeholder: string;
+  placeholder?: {
+    text: string;
+    color: string;
+  };
   hint: {
     error: boolean;
-    message: string;
+    text: string;
   };
   resizable?: false | 'vertical' | 'horizontal' | 'both';
   maxWidth: string;
@@ -23,20 +26,21 @@ interface Props {
   background?: string;
   // padding:
   boxShadow?: string;
-  focusRing?: {
-    error: boolean;
-    borderColor: string;
+  focus?: {
+    focused: boolean;
+    border: string;
     boxShadowColor: string;
+  };
+  state: {
+    value: string;
+    setValue: (e: ChangeEvent<HTMLInputElement>) => void;
   };
 }
 
 const Textarea: React.FC<Props> = ({
   label,
   placeholder,
-  hint = {
-    error: false,
-    message: undefined,
-  },
+  hint,
   resizable = false,
   maxWidth,
   maxHeight,
@@ -47,13 +51,14 @@ const Textarea: React.FC<Props> = ({
   background,
   // padding,
   boxShadow,
-  focusRing,
+  focus,
 }) => {
   return (
     <StyledTextareaContainer>
       <StyledTextareaLabel>{label}</StyledTextareaLabel>
       <StyledTextarea
-        placeholder={placeholder}
+        placeholder={placeholder?.text}
+        placeholderStyles={placeholder}
         resizable={resizable}
         error={hint.error}
         maxWidth={maxWidth}
@@ -65,9 +70,9 @@ const Textarea: React.FC<Props> = ({
         background={background}
         // padding:
         boxShadow={boxShadow}
-        focusRing={focusRing}
+        focus={focus}
       />
-      <StyledTextareaHint error={hint.error}>{hint.message}</StyledTextareaHint>
+      <StyledTextareaHint error={hint.error}>{hint.text}</StyledTextareaHint>
     </StyledTextareaContainer>
   );
 };
