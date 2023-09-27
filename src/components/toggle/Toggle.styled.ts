@@ -21,7 +21,7 @@ interface ButtonProps {
     checked: string;
     unchecked: string;
   };
-  readOnly?: boolean;
+  disabled?: boolean;
 }
 
 export const StyledToggleButton = styled.div<ButtonProps>`
@@ -32,14 +32,20 @@ export const StyledToggleButton = styled.div<ButtonProps>`
       + label {
         background: ${({ background }) => background?.checked || '#7f56d9'};
 
-        &:hover {
+        &:hover,
+        &:focus {
           box-shadow: 0px 0px 0px 4px
             ${({ focusRing }) => focusRing?.checked || '#f4ebff'};
         }
 
-        svg {
+        span {
           transform: translate(100%, -50%);
+          background-color: ${({ color }) => color?.checked || '#fff'};
         }
+
+        /* svg {
+          transform: translate(100%, -50%);
+        } */
       }
     }
   }
@@ -55,15 +61,23 @@ export const StyledToggleButton = styled.div<ButtonProps>`
     background: ${({ background }) => background?.unchecked || '#f2f4f7'};
     transition: 0.3s ease;
 
-    /* span {
-      width: 40%;
-      height: 100%;
-      border-radius: 50%;
-      background-color: red;
+    span {
       display: inline-block;
-    } */
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background-color: ${({ color }) => color?.unchecked || '#fff'};
+      filter: drop-shadow(0px 1px 2px rgba(16, 24, 40, 0.06))
+        drop-shadow(0px 1px 3px rgba(16, 24, 40, 0.1));
+      transition: 0.3s ease;
+      position: absolute;
+      top: 50%;
+      transform: translate(0%, -50%);
+    }
 
-    &:hover {
+    &:hover,
+    &:focus {
+      outline: none;
       box-shadow: 0px 0px 0px 4px
         ${({ focusRing }) => focusRing?.unchecked || '#f4ebff'};
     }
@@ -71,20 +85,21 @@ export const StyledToggleButton = styled.div<ButtonProps>`
     svg {
       width: 1.25rem;
       height: 1.25rem;
-      fill: ${({ color }) => color};
-      fill: black;
-      color: black;
+      fill: ${({ color }) => color}; // DOESN'T WORK!
+      /* fill: black;
+      color: black; */
       filter: drop-shadow(0px 1px 2px rgba(16, 24, 40, 0.06))
         drop-shadow(0px 1px 3px rgba(16, 24, 40, 0.1));
       transition: 0.3s ease;
       position: absolute;
       top: 50%;
       transform: translate(0%, -50%);
-      /* transform: translateX(100%); */
     }
   }
 
-  /* Size Variants */
+  /************************************
+   SIZES
+  *************************************/
   ${({ size }) =>
     size === 'sm' &&
     css`
@@ -100,16 +115,19 @@ export const StyledToggleButton = styled.div<ButtonProps>`
       }
     `}
 
-  /* Read Only */
-    ${({ readOnly }) =>
-    readOnly &&
+  /************************************
+   DISABLED
+  *************************************/
+    ${({ disabled }) =>
+    disabled &&
     css`
       input {
         &:checked {
           + label {
             /* opacity: 0.7; */
 
-            &:hover {
+            &:hover,
+            &:focus {
               box-shadow: none;
             }
           }
@@ -117,11 +135,13 @@ export const StyledToggleButton = styled.div<ButtonProps>`
       }
 
       label {
-        cursor: not-allowed;
+        /* cursor: not-allowed; */
         pointer-events: none;
-        opacity: 0.7;
+        opacity: 0.65;
 
-        &:hover {
+        &:hover,
+        &:focus {
+          outline: none;
           box-shadow: none;
         }
       }
@@ -132,6 +152,7 @@ export const StyledToggleInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* gap: 0.25rem; */
 `;
 
 interface TitleProps {

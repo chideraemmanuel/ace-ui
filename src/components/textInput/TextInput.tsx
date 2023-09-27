@@ -43,7 +43,10 @@ interface Props {
     border: string;
     boxShadowColor: string;
   };
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  state: {
+    value: string;
+    setValue: (e: ChangeEvent<HTMLInputElement>) => void;
+  };
 }
 
 const TextInput: React.FC<Props> = ({
@@ -64,7 +67,7 @@ const TextInput: React.FC<Props> = ({
   fontSize,
   boxShadow,
   focus,
-  handleChange,
+  state,
 }) => {
   const [passwordCurrentType, setPasswordCurrentType] = useState<
     'text' | 'password'
@@ -147,7 +150,8 @@ const TextInput: React.FC<Props> = ({
               background={background}
               color={color}
               fontSize={fontSize}
-              onChange={(e) => handleChange(e)}
+              value={state?.value}
+              onChange={(e) => state?.setValue(e)}
             />
           </div>
 

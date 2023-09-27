@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import {
   StyledToggleButton,
   StyledToggleContainer,
@@ -55,10 +55,10 @@ interface Props {
     checked: string;
     unchecked: string;
   };
-  readOnly: boolean;
+  disabled: boolean;
   state: {
     isChecked: boolean;
-    setIsChecked: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsChecked: (e?: ChangeEvent<HTMLInputElement>) => void;
   };
 }
 
@@ -69,7 +69,7 @@ const Toggle: React.FC<Props> = ({
   toggleBackground,
   toggleColor,
   focusRing,
-  readOnly,
+  disabled,
   state,
 }) => {
   // const [isChecked, setIsChecked] = useState(false);
@@ -83,18 +83,18 @@ const Toggle: React.FC<Props> = ({
         background={toggleBackground}
         color={toggleColor}
         focusRing={focusRing}
-        readOnly={readOnly}
+        disabled={disabled}
       >
         <input
           type="checkbox"
           name="checkbox"
           id="checkbox"
           checked={state?.isChecked}
-          onChange={() => state?.setIsChecked((prev) => !prev)}
+          onChange={(e) => state?.setIsChecked(e)}
         />
         <label htmlFor="checkbox">
-          {/* <span className="circle"></span> */}
-          <svg
+          <span className="circle"></span>
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"
             height="24"
@@ -157,7 +157,7 @@ const Toggle: React.FC<Props> = ({
                 />
               </filter>
             </defs>
-          </svg>
+          </svg> */}
         </label>
       </StyledToggleButton>
 
