@@ -15,23 +15,24 @@ interface ButtonProps {
   width?: string;
   fontSize?: string;
   //
-  hover: {
+  hover?: {
     background?: string;
     color?: string;
   };
-  focus: {
+  focus?: {
     background?: string;
     color?: string;
     borderColor?: string;
     borderWidth?: string;
     borderStyle?: string;
   };
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const StyledButton = styled.a<ButtonProps>`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   font-size: 16px;
   cursor: pointer;
   text-decoration: none;

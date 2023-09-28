@@ -1,6 +1,5 @@
 import React from 'react';
 // import './Button.scss';
-import { FiCircle } from 'react-icons/fi';
 import { StyledButton, StyledButtonIcon } from './Button.styled';
 import { FaGoogle } from 'react-icons/fa';
 
@@ -24,18 +23,18 @@ interface Props {
   color?: string;
   width?: string;
   fontSize?: string;
-  hover: {
+  hover?: {
     background?: string;
     color?: string;
   };
-  focus: {
+  focus?: {
     background?: string;
     color?: string;
     borderColor?: string;
     borderWidth?: string;
     borderStyle?: string;
   };
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const Button: React.FC<Props> = ({

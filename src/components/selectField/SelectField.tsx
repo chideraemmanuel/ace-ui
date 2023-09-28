@@ -140,7 +140,7 @@ import {
   StyledSelectFieldListItem,
   StyledSelectFieldToggle,
 } from './SelectField.styled';
-import { FiCheck, FiChevronDown, FiUser, FiUserPlus } from 'react-icons/fi';
+import { FiCheck, FiChevronDown } from 'react-icons/fi';
 
 interface ListProps {
   title: string;
@@ -180,18 +180,18 @@ interface Props {
   // listItemStyles: {};
 }
 
-const dummy: ListProps[] = [
-  {
-    title: 'John Doe',
-    value: 'John Doe',
-    icon: <FiUser />,
-  },
-  {
-    title: 'Jane Doe',
-    value: 'Jane Doe',
-    icon: <FiUserPlus />,
-  },
-];
+// const dummy: ListProps[] = [
+//   {
+//     title: 'John Doe',
+//     value: 'John Doe',
+//     icon: <FiUser />,
+//   },
+//   {
+//     title: 'Jane Doe',
+//     value: 'Jane Doe',
+//     icon: <FiUserPlus />,
+//   },
+// ];
 
 const SelectField: React.FC<Props> = ({
   placeholder,
@@ -200,8 +200,8 @@ const SelectField: React.FC<Props> = ({
   toggleStyles,
 }) => {
   const [dropdownActive, setDropdownActive] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<null | string>(null);
-  const [selectedIcon, setSelectedIcon] = useState<any>(null);
+  // const [selectedOption, setSelectedOption] = useState<null | string>(null);
+  // const [selectedIcon, setSelectedIcon] = useState<any>(null);
 
   const newToggleStyles = {
     ...toggleStyles,
@@ -241,7 +241,7 @@ const SelectField: React.FC<Props> = ({
       </StyledSelectFieldToggle>
 
       <StyledSelectFieldList active={dropdownActive}>
-        {dummy?.map((item, index) => (
+        {list?.map((item, index) => (
           <StyledSelectFieldListItem
             onClick={() => setDropdownActive(false)}
             key={index}
