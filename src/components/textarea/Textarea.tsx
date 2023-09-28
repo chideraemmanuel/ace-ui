@@ -5,39 +5,9 @@ import {
   StyledTextareaHint,
   StyledTextareaLabel,
 } from './Textarea.styled';
+import { ComponentProps } from './Textarea.types';
 
-interface Props {
-  label: string;
-  placeholder?: {
-    text: string;
-    color: string;
-  };
-  hint: {
-    error: boolean;
-    text: string;
-  };
-  resizable?: false | 'vertical' | 'horizontal' | 'both';
-  maxWidth: string;
-  maxHeight: string;
-  borderRadius?: string;
-  borderColor?: string;
-  borderWidth?: string;
-  borderStyle?: string;
-  background?: string;
-  // padding:
-  boxShadow?: string;
-  focus?: {
-    focused: boolean;
-    border: string;
-    boxShadowColor: string;
-  };
-  state: {
-    value: string;
-    setValue: (e: ChangeEvent<HTMLInputElement>) => void;
-  };
-}
-
-const Textarea: React.FC<Props> = ({
+const Textarea: React.FC<ComponentProps> = ({
   label,
   placeholder,
   hint,

@@ -1,6 +1,6 @@
-## My React Component Library
+## AceUI
 
-This is a library of reusable React components that can be used to build beautiful and functional user interfaces.
+This is a library of fully customizable React UI components that can be used to build beautiful and functional user interfaces.
 
 **Features:**
 
@@ -17,16 +17,32 @@ To get started, install the library using npm:
 $ npm install my-react-component-library
 ```
 
-Once installed, you can import the components into your React application:
+Once installed, wrap your root component with the `ThemeProvider` and pass in a `theme` object:
+
+```javascript
+import { ThemeProvider } from '@aceui/components';
+import { theme } from '@aceui/components/theme';
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <div className="App">... // rest of your code</div>
+    </ThemeProvider>
+  );
+};
+```
+
+Now, you can import components from the library into your React application:
 
 ```javascript
 import { Button } from '@aceui/components';
 
-const App = () => {
+const Form = () => {
   return (
-    <div>
-      <Button>Click Me!</Button>
-    </div>
+    <form className="form">
+      ... // rest of your code
+      <Button text="Click me!" />
+    </form>
   );
 };
 ```

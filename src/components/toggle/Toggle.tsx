@@ -6,63 +6,9 @@ import {
   StyledToggleInfo,
   StyledToggleTitle,
 } from './Toggle.styled';
+import { ComponentProps } from './Toggle.types';
 
-interface Props {
-  size?: 'sm' | 'md';
-  title?: {
-    text: string;
-    fontSize: string;
-    color: string;
-    fontStyle: 'italic' | 'normal';
-    fontWeight:
-      | '100'
-      | '200'
-      | '300'
-      | '400'
-      | '500'
-      | '600'
-      | '700'
-      | '800'
-      | '900';
-    lineHeight: string;
-  };
-  hint?: {
-    text: string;
-    fontSize: string;
-    color: string;
-    fontStyle: 'italic' | 'normal';
-    fontWeight:
-      | '100'
-      | '200'
-      | '300'
-      | '400'
-      | '500'
-      | '600'
-      | '700'
-      | '800'
-      | '900';
-    lineHeight: string;
-  };
-  toggleBackground?: {
-    checked: string;
-    unchecked: string;
-  };
-  toggleColor?: {
-    checked: string;
-    unchecked: string;
-  };
-  focusRing: {
-    checked: string;
-    unchecked: string;
-  };
-  disabled: boolean;
-  state: {
-    isChecked: boolean;
-    setIsChecked: (e?: ChangeEvent<HTMLInputElement>) => void;
-  };
-}
-
-const Toggle: React.FC<Props> = ({
+const Toggle: React.FC<ComponentProps> = ({
   size = 'md',
   title,
   hint,

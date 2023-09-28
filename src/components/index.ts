@@ -16,3 +16,4 @@ export { default as Textarea } from './textarea/Textarea';
 export { default as Toggle } from './toggle/Toggle';
 export { default as Tooltip } from './tooltip/Tooltip';
 export { default as ThemeProvider } from './themeProvider/ThemeProvider';
+export { default as theme } from './theme';

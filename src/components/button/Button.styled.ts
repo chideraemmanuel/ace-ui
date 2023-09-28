@@ -1,35 +1,7 @@
 import styled, { css } from 'styled-components';
+import { StyledButtonProps, StyledIconProps } from './Button.types';
 
-interface ButtonProps {
-  // base
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-  //   variants
-  variant?: 'primary' | 'secondary';
-  iconSize?: string;
-  iconPosition?: 'start' | 'end' | 'center';
-  // custom styling
-  borderRadius?: string;
-  padding?: string;
-  background?: string;
-  color?: string;
-  width?: string;
-  fontSize?: string;
-  //
-  hover?: {
-    background?: string;
-    color?: string;
-  };
-  focus?: {
-    background?: string;
-    color?: string;
-    borderColor?: string;
-    borderWidth?: string;
-    borderStyle?: string;
-  };
-  disabled?: boolean;
-}
-
-export const StyledButton = styled.a<ButtonProps>`
+export const StyledButton = styled.a<StyledButtonProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -200,12 +172,7 @@ export const StyledButton = styled.a<ButtonProps>`
     `}
 `;
 
-interface IconProps {
-  buttonSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-  iconSize?: string;
-}
-
-export const StyledButtonIcon = styled.span<IconProps>`
+export const StyledButtonIcon = styled.span<StyledIconProps>`
   display: inline-block;
 
   svg {

@@ -5,16 +5,9 @@ import {
   StyledTooltipTrigger,
 } from './Tooltip.styled';
 import { FiInfo } from 'react-icons/fi';
+import { ComponentProps } from './Tooltip.types';
 
-interface Props {
-  children: React.ReactNode | string;
-  arrow?: boolean;
-  background?: string;
-  color?: string;
-  trigger: any;
-}
-
-const Tooltip: FC<Props> = ({
+const Tooltip: FC<ComponentProps> = ({
   children,
   trigger,
   arrow = true,

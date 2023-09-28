@@ -1,4 +1,9 @@
 import styled, { css } from 'styled-components';
+import {
+  StyledToggleButtonProps,
+  ToggleHintProps,
+  ToggleTitleProps,
+} from './Toggle.types';
 
 export const StyledToggleContainer = styled.div`
   display: flex;
@@ -7,24 +12,7 @@ export const StyledToggleContainer = styled.div`
   gap: 0.75rem;
 `;
 
-interface ButtonProps {
-  size?: 'sm' | 'md';
-  background?: {
-    checked: string;
-    unchecked: string;
-  };
-  color?: {
-    checked: string;
-    unchecked: string;
-  };
-  focusRing?: {
-    checked: string;
-    unchecked: string;
-  };
-  disabled?: boolean;
-}
-
-export const StyledToggleButton = styled.div<ButtonProps>`
+export const StyledToggleButton = styled.div<StyledToggleButtonProps>`
   input {
     display: none;
 
@@ -155,24 +143,7 @@ export const StyledToggleInfo = styled.div`
   /* gap: 0.25rem; */
 `;
 
-interface TitleProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
-  lineHeight?: string;
-}
-
-export const StyledToggleTitle = styled.span<TitleProps>`
+export const StyledToggleTitle = styled.span<ToggleTitleProps>`
   color: ${({ color }) => color || '#344054'};
   font-size: ${({ fontSize }) => fontSize || '1rem'};
   font-style: ${({ fontStyle }) => fontStyle || 'normal'};
@@ -180,24 +151,7 @@ export const StyledToggleTitle = styled.span<TitleProps>`
   line-height: ${({ lineHeight }) => lineHeight || '1.5rem'};
 `;
 
-interface HintProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
-  lineHeight?: string;
-}
-
-export const StyledToggleHint = styled.span<HintProps>`
+export const StyledToggleHint = styled.span<ToggleHintProps>`
   /* color: #667085;
   font-size: 1rem;
   font-style: normal;

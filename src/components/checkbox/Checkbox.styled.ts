@@ -1,4 +1,9 @@
 import styled, { css } from 'styled-components';
+import {
+  CheckboxHintProps,
+  CheckboxTitleProps,
+  StyledCheckboxProps,
+} from './Checkbox.types';
 
 export const StyledCheckBoxContainer = styled.div`
   display: flex;
@@ -7,25 +12,7 @@ export const StyledCheckBoxContainer = styled.div`
   gap: 0.75rem;
 `;
 
-interface CheckboxProps {
-  size?: 'sm' | 'md';
-  variant: 'fill' | 'outline';
-  background?: {
-    checked: string;
-    unchecked: string;
-  };
-  // color?: {
-  //   checked: string;
-  //   unchecked: string;
-  // };
-  color?: string;
-  focus?: {
-    checked: string;
-    unchecked: string;
-  };
-  disabled?: boolean;
-}
-export const StyledCheckbox = styled.div<CheckboxProps>`
+export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   input {
     visibility: hidden;
     display: none;
@@ -152,24 +139,7 @@ export const StyledCheckboxInfo = styled.div`
   gap: 0.25rem;
 `;
 
-interface TitleProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
-  lineHeight?: string;
-}
-
-export const StyledCheckboxTitle = styled.span<TitleProps>`
+export const StyledCheckboxTitle = styled.span<CheckboxTitleProps>`
   color: ${({ color }) => color || '#344054'};
   font-size: ${({ fontSize }) => fontSize || '1rem'};
   font-style: ${({ fontStyle }) => fontStyle || 'normal'};
@@ -177,24 +147,7 @@ export const StyledCheckboxTitle = styled.span<TitleProps>`
   /* line-height: ${({ lineHeight }) => lineHeight || '1.5rem'}; */
 `;
 
-interface HintProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
-  lineHeight?: string;
-}
-
-export const StyledCheckboxHint = styled.span<HintProps>`
+export const StyledCheckboxHint = styled.span<CheckboxHintProps>`
   /* color: #667085;
   font-size: 1rem;
   font-style: normal;

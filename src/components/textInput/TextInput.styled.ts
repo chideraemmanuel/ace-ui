@@ -1,4 +1,11 @@
 import styled, { css } from 'styled-components';
+import {
+  StyledInputFieldProps,
+  StyledTextInputProps,
+  TextInputHintProps,
+  TextInputIconProps,
+  TextInputLabelProps,
+} from './TextInput.types';
 
 // export const StyledTextInput = styled.input`
 
@@ -10,11 +17,7 @@ export const StyledTextInputContainer = styled.label`
   gap: 0.375rem;
 `;
 
-interface LabelProps {
-  color?: string;
-}
-
-export const StyledTextInputLabel = styled.span<LabelProps>`
+export const StyledTextInputLabel = styled.span<TextInputLabelProps>`
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
@@ -24,23 +27,7 @@ export const StyledTextInputLabel = styled.span<LabelProps>`
   color: ${({ color }) => color || '#101828'};
 `;
 
-interface InputProps {
-  error?: boolean;
-  readOnly?: boolean;
-
-  borderRadius?: string;
-  border?: string;
-  background?: string;
-  // padding:
-  boxShadow?: string;
-  focus?: {
-    focused: boolean;
-    border: string;
-    boxShadowColor: string;
-  };
-}
-
-export const StyledTextInput = styled.div<InputProps>`
+export const StyledTextInput = styled.div<StyledTextInputProps>`
   /* border-radius: 0.5rem; */
   border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
   border: ${({ border }) => border || '1px solid #d0d5dd'};
@@ -123,16 +110,7 @@ export const StyledTextInput = styled.div<InputProps>`
     `}
 `;
 
-interface InputFieldProps {
-  readOnly?: boolean;
-  background?: string;
-  color: string;
-  fontSize: string;
-  placeholderStyles?: {
-    color: string;
-  };
-}
-export const StyledTextInputField = styled.input<InputFieldProps>`
+export const StyledTextInputField = styled.input<StyledInputFieldProps>`
   font-size: ${({ fontSize }) => fontSize || '1rem'};
   font-style: normal;
   font-weight: 400;
@@ -169,11 +147,7 @@ export const StyledTextInputField = styled.input<InputFieldProps>`
     `}
 `;
 
-interface IconProps {
-  color?: string;
-}
-
-export const StyledTextInputIcon = styled.span<IconProps>`
+export const StyledTextInputIcon = styled.span<TextInputIconProps>`
   font-size: 1.25rem;
   /* color: #667085; */
   color: ${({ color }) => color || '#667085'};
@@ -182,12 +156,7 @@ export const StyledTextInputIcon = styled.span<IconProps>`
   align-items: center;
 `;
 
-interface HintProps {
-  error?: boolean;
-  color?: string;
-}
-
-export const StyledTextInputHint = styled.div<HintProps>`
+export const StyledTextInputHint = styled.div<TextInputHintProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   'space-1': '0.25rem',
   'space-2': '0.5rem',
   'space-3': '0.75rem',
@@ -18,3 +18,5 @@ export const theme = {
   'space-56': '14rem',
   'space-64': '16rem',
 };
+
+export default theme;

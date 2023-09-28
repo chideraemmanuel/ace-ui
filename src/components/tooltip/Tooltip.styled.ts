@@ -1,16 +1,11 @@
 import styled from 'styled-components';
+import { StyledTooltipProps } from './Tooltip.types';
 
 export const StyledTooltipContainer = styled.span`
   position: relative;
 `;
 
-interface TooltipProps {
-  arrow?: boolean;
-  background?: string;
-  color?: string;
-}
-
-export const StyledTooltip = styled.div<TooltipProps>`
+export const StyledTooltip = styled.div<StyledTooltipProps>`
   position: absolute;
   width: min(20rem, 90vw);
   /* max-width: 20rem; */

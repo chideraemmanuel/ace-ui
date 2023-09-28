@@ -2,42 +2,9 @@ import React from 'react';
 // import './Button.scss';
 import { StyledButton, StyledButtonIcon } from './Button.styled';
 import { FaGoogle } from 'react-icons/fa';
+import { ComponentProps } from './Button.types';
 
-interface Props {
-  // base
-  tagType?: 'button' | 'a';
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-  href?: string;
-  text: string;
-
-  //   variants
-  variant?: 'primary' | 'secondary';
-  icon?: boolean;
-  iconSize?: string;
-  iconPosition?: 'start' | 'end' | 'center';
-
-  // custom styling
-  borderRadius?: string;
-  padding?: string;
-  background?: string;
-  color?: string;
-  width?: string;
-  fontSize?: string;
-  hover?: {
-    background?: string;
-    color?: string;
-  };
-  focus?: {
-    background?: string;
-    color?: string;
-    borderColor?: string;
-    borderWidth?: string;
-    borderStyle?: string;
-  };
-  disabled?: boolean;
-}
-
-const Button: React.FC<Props> = ({
+const Button: React.FC<ComponentProps> = ({
   tagType = 'a',
   href,
   text,

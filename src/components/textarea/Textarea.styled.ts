@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { StyledTextareaProps, TextareaHintProps } from './Textarea.types';
 
 export const StyledTextareaContainer = styled.label`
   display: flex;
@@ -15,29 +16,7 @@ export const StyledTextareaLabel = styled.span`
   color: #101828;
 `;
 
-interface TextareaProps {
-  error: boolean;
-  resizable: false | 'vertical' | 'horizontal' | 'both';
-  maxWidth: string;
-  maxHeight: string;
-  borderRadius?: string;
-  borderColor?: string;
-  borderWidth?: string;
-  borderStyle?: string;
-  background?: string;
-  // padding:
-  boxShadow?: string;
-  focus?: {
-    focused: boolean;
-    border: string;
-    boxShadowColor: string;
-  };
-  placeholderStyles?: {
-    color: string;
-  };
-}
-
-export const StyledTextarea = styled.textarea<TextareaProps>`
+export const StyledTextarea = styled.textarea<StyledTextareaProps>`
   font-family: Georgia, 'Times New Roman', Times, serif;
   outline: none;
   color: #101828;
@@ -62,7 +41,6 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   border-color: ${({ borderColor }) => borderColor || '#d0d5dd'};
   border-width: ${({ borderWidth }) => borderWidth || '1px'};
   border-style: ${({ borderStyle }) => borderStyle || 'solid'};
-  /* background: #fff; */
   background: ${({ background }) => background || '#fff'};
   box-shadow: ${({ boxShadow }) =>
     boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
@@ -80,7 +58,6 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   }
 
   &::placeholder {
-    /* color: #667085; */
     color: ${({ placeholderStyles }) => placeholderStyles?.color || '#667085'};
     font-size: 1rem;
     font-style: normal;
@@ -107,11 +84,7 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
     `}
 `;
 
-interface HintProps {
-  error: boolean;
-}
-
-export const StyledTextareaHint = styled.span<HintProps>`
+export const StyledTextareaHint = styled.span<TextareaHintProps>`
   color: #667085;
   font-size: 0.875rem;
   font-style: normal;

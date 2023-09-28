@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { SelectFieldToggleProps, StyledListProps } from './SelectField.types';
 
 export const StyledSelectFieldContainer = styled.div`
   display: flex;
@@ -7,21 +8,7 @@ export const StyledSelectFieldContainer = styled.div`
   position: relative;
 `;
 
-interface ToggleProps {
-  borderRadius?: string;
-  borderColor?: string;
-  borderWidth?: string;
-  borderStyle?: string;
-  background?: string;
-  // padding:
-  boxShadow?: string;
-  focusRing?: {
-    borderColor: string;
-    boxShadowColor: string;
-  };
-}
-
-export const StyledSelectFieldToggle = styled.div<ToggleProps>`
+export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
   input {
     display: none;
 
@@ -65,20 +52,20 @@ export const StyledSelectFieldToggle = styled.div<ToggleProps>`
     box-shadow: ${({ boxShadow }) =>
       boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
 
-    &:hover {
+    /* &:hover {
       border: 1px solid #d6bbfb;
       box-shadow: 0px 0px 0px 4px #f4ebff,
         0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-    }
+    } */
 
-    /* &:hover {
+    &:hover {
       border: 1px solid
         ${({ focusRing }) => focusRing?.borderColor || '#d6bbfb'};
       box-shadow: ${({ focusRing }) =>
-      `0px 0px 0px 4px ${
-        focusRing?.boxShadowColor ? focusRing?.boxShadowColor : '#f4ebff'
-      } 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
-    } */
+        `0px 0px 0px 4px ${
+          focusRing?.boxShadowColor ? focusRing?.boxShadowColor : '#f4ebff'
+        } 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
+    }
   }
 
   .toggle-right {
@@ -117,11 +104,7 @@ export const StyledSelectFieldToggle = styled.div<ToggleProps>`
   }
 `;
 
-interface ListProps {
-  active: boolean;
-}
-
-export const StyledSelectFieldList = styled.div<ListProps>`
+export const StyledSelectFieldList = styled.div<StyledListProps>`
   width: 20rem;
   max-height: 20rem;
   border-radius: 0.5rem;
