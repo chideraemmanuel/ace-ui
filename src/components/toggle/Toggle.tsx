@@ -14,7 +14,7 @@ const Toggle: React.FC<ComponentProps> = ({
   hint,
   toggleBackground,
   toggleColor,
-  focusRing,
+  focus,
   disabled,
   state,
 }) => {
@@ -28,7 +28,7 @@ const Toggle: React.FC<ComponentProps> = ({
         size={size}
         background={toggleBackground}
         color={toggleColor}
-        focusRing={focusRing}
+        focus={focus}
         disabled={disabled}
       >
         <input

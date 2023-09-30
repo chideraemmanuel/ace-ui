@@ -18,13 +18,13 @@ export const StyledTextInputContainer = styled.label`
 `;
 
 export const StyledTextInputLabel = styled.span<TextInputLabelProps>`
-  font-size: 0.875rem;
+  color: ${({ color }) => color || '#101828'};
+  font-size: ${({ fontSize, theme }) =>
+    fontSize || theme['xs-font'] || '0.875rem'};
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 1.225rem */
   letter-spacing: -0.01263rem;
-  /* color: #101828; */
-  color: ${({ color }) => color || '#101828'};
 `;
 
 export const StyledTextInput = styled.div<StyledTextInputProps>`
@@ -32,12 +32,13 @@ export const StyledTextInput = styled.div<StyledTextInputProps>`
   border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
   border: ${({ border }) => border || '1px solid #d0d5dd'};
   background: ${({ background }) => background || '#fff'};
-  padding: 0 0.875rem;
+  /* padding: 0 0.875rem; */
+  padding: ${({ theme }) => `0 ${theme['fluid-block-space-3']}`};
   box-shadow: ${({ boxShadow }) =>
     boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
   transition: 0.3s ease;
 
   /* &:hover {
@@ -55,11 +56,11 @@ export const StyledTextInput = styled.div<StyledTextInputProps>`
   > div {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
   }
 
   .help-icon {
-    font-size: 1rem;
+    font-size: ${({ theme }) => theme['sm-font'] || '1rem'};
     color: #667085;
     line-height: 140%;
     cursor: pointer;
@@ -111,7 +112,7 @@ export const StyledTextInput = styled.div<StyledTextInputProps>`
 `;
 
 export const StyledTextInputField = styled.input<StyledInputFieldProps>`
-  font-size: ${({ fontSize }) => fontSize || '1rem'};
+  font-size: ${({ fontSize, theme }) => fontSize || theme['sm-font'] || '1rem'};
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 1.4rem */
@@ -119,11 +120,13 @@ export const StyledTextInputField = styled.input<StyledInputFieldProps>`
   border: none;
   outline: none;
   color: ${({ color }) => color || '#101828'};
-  padding: 0.625rem 0;
+  /* padding: 0.625rem 0; */
+  padding: ${({ theme }) => `${theme['fluid-block-space-2']} 0}`};
   background: ${({ background }) => background || '#fff'};
 
   &::placeholder {
-    font-size: ${({ fontSize }) => fontSize || '1rem'};
+    font-size: ${({ fontSize, theme }) =>
+      fontSize || theme['sm-font'] || '1rem'};
     font-style: normal;
     font-weight: 400;
     line-height: 140%; /* 1.4rem */
@@ -148,8 +151,7 @@ export const StyledTextInputField = styled.input<StyledInputFieldProps>`
 `;
 
 export const StyledTextInputIcon = styled.span<TextInputIconProps>`
-  font-size: 1.25rem;
-  /* color: #667085; */
+  font-size: ${({ theme }) => theme['md-font'] || '1.25rem'};
   color: ${({ color }) => color || '#667085'};
   /* line-height: 140%; */
   display: flex;
@@ -164,7 +166,7 @@ export const StyledTextInputHint = styled.div<TextInputHintProps>`
   span {
     /* color: #667085; */
     color: ${({ color }) => color || '#667085'};
-    font-size: 0.875rem;
+    font-size: ${({ theme }) => theme['xs-font'] || '0.875rem'};
     font-style: normal;
     font-weight: 500;
     line-height: 140%; /* 1.225rem */
@@ -180,7 +182,7 @@ export const StyledTextInputHint = styled.div<TextInputHintProps>`
 
   .forgot-password {
     color: #667085;
-    font-size: 0.875rem;
+    font-size: ${({ theme }) => theme['xs-font'] || '0.875rem'};
     font-style: normal;
     font-weight: 500;
     line-height: 140%; /* 1.225rem */

@@ -9,7 +9,7 @@ export const StyledToggleContainer = styled.div`
   display: flex;
   //   align-items: center;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: ${({ theme }) => theme['fluid-block-space-2'] || '0.75rem'};
 `;
 
 export const StyledToggleButton = styled.div<StyledToggleButtonProps>`
@@ -23,7 +23,7 @@ export const StyledToggleButton = styled.div<StyledToggleButtonProps>`
         &:hover,
         &:focus {
           box-shadow: 0px 0px 0px 4px
-            ${({ focusRing }) => focusRing?.checked || '#f4ebff'};
+            ${({ focus }) => focus?.checked || '#f4ebff'};
         }
 
         span {
@@ -67,22 +67,20 @@ export const StyledToggleButton = styled.div<StyledToggleButtonProps>`
     &:focus {
       outline: none;
       box-shadow: 0px 0px 0px 4px
-        ${({ focusRing }) => focusRing?.unchecked || '#f4ebff'};
+        ${({ focus }) => focus?.unchecked || '#f4ebff'};
     }
 
-    svg {
+    /* svg {
       width: 1.25rem;
       height: 1.25rem;
       fill: ${({ color }) => color}; // DOESN'T WORK!
-      /* fill: black;
-      color: black; */
       filter: drop-shadow(0px 1px 2px rgba(16, 24, 40, 0.06))
         drop-shadow(0px 1px 3px rgba(16, 24, 40, 0.1));
       transition: 0.3s ease;
       position: absolute;
       top: 50%;
       transform: translate(0%, -50%);
-    }
+    } */
   }
 
   /************************************

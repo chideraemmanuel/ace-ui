@@ -1,7 +1,10 @@
 import { ChangeEvent } from 'react';
 
 export interface ComponentProps {
-  label?: string;
+  label?: {
+    text: string;
+    color?: string;
+  };
   placeholder?: {
     text: string;
     color?: string;
@@ -9,15 +12,15 @@ export interface ComponentProps {
   hint: {
     error?: boolean;
     text: string;
+    color: string;
   };
   resizable?: false | 'vertical' | 'horizontal' | 'both';
   maxWidth?: string;
   maxHeight?: string;
   borderRadius?: string;
-  borderColor?: string;
-  borderWidth?: string;
-  borderStyle?: string;
+  border?: string;
   background?: string;
+  fontSize: string;
   // padding:
   boxShadow?: string;
   focus?: {
@@ -31,16 +34,20 @@ export interface ComponentProps {
   };
 }
 
+export interface TextareaLabelProps {
+  color?: string;
+  fontSize?: string;
+}
+
 export interface StyledTextareaProps {
   error?: boolean;
   resizable?: false | 'vertical' | 'horizontal' | 'both';
   maxWidth?: string;
   maxHeight?: string;
   borderRadius?: string;
-  borderColor?: string;
-  borderWidth?: string;
-  borderStyle?: string;
+  border?: string;
   background?: string;
+  fontSize: string;
   // padding:
   boxShadow?: string;
   focus?: {
@@ -55,4 +62,6 @@ export interface StyledTextareaProps {
 
 export interface TextareaHintProps {
   error?: boolean;
+  color?: string;
+  fontSize?: string;
 }

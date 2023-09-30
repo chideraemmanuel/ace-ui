@@ -5,6 +5,7 @@ export interface ComponentProps {
   label?: {
     text: string;
     color?: string;
+    fontSize?: string;
   };
   placeholder?: {
     text: string;
@@ -50,6 +51,7 @@ export interface ComponentProps {
 
 export interface TextInputLabelProps {
   color?: string;
+  fontSize?: string;
 }
 
 export interface StyledTextInputProps {
@@ -85,4 +87,5 @@ export interface TextInputIconProps {
 export interface TextInputHintProps {
   error?: boolean;
   color?: string;
+  fontSize?: string;
 }

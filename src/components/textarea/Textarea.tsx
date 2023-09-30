@@ -15,17 +15,16 @@ const Textarea: React.FC<ComponentProps> = ({
   maxWidth,
   maxHeight,
   borderRadius,
-  borderColor,
-  borderWidth,
-  borderStyle,
+  border,
   background,
+  fontSize,
   // padding,
   boxShadow,
   focus,
 }) => {
   return (
     <StyledTextareaContainer>
-      <StyledTextareaLabel>{label}</StyledTextareaLabel>
+      <StyledTextareaLabel {...label}>{label?.text}</StyledTextareaLabel>
       <StyledTextarea
         placeholder={placeholder?.text}
         placeholderStyles={placeholder}
@@ -34,15 +33,14 @@ const Textarea: React.FC<ComponentProps> = ({
         maxWidth={maxWidth}
         maxHeight={maxHeight}
         borderRadius={borderRadius}
-        borderColor={borderColor}
-        borderWidth={borderWidth}
-        borderStyle={borderStyle}
+        border={border}
         background={background}
+        fontSize={fontSize}
         // padding:
         boxShadow={boxShadow}
         focus={focus}
       />
-      <StyledTextareaHint error={hint.error}>{hint.text}</StyledTextareaHint>
+      <StyledTextareaHint {...hint}>{hint.text}</StyledTextareaHint>
     </StyledTextareaContainer>
   );
 };

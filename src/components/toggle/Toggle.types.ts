@@ -44,7 +44,7 @@ export interface ComponentProps {
     checked?: string;
     unchecked?: string;
   };
-  focusRing: {
+  focus: {
     checked?: string;
     unchecked?: string;
   };
@@ -65,7 +65,7 @@ export interface StyledToggleButtonProps {
     checked?: string;
     unchecked?: string;
   };
-  focusRing?: {
+  focus?: {
     checked?: string;
     unchecked?: string;
   };

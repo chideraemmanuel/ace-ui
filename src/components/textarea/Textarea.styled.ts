@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
-import { StyledTextareaProps, TextareaHintProps } from './Textarea.types';
+import {
+  StyledTextareaProps,
+  TextareaHintProps,
+  TextareaLabelProps,
+} from './Textarea.types';
 
 export const StyledTextareaContainer = styled.label`
   display: flex;
@@ -7,28 +11,29 @@ export const StyledTextareaContainer = styled.label`
   gap: 0.375rem;
 `;
 
-export const StyledTextareaLabel = styled.span`
-  font-size: 0.875rem;
+export const StyledTextareaLabel = styled.span<TextareaLabelProps>`
+  color: ${({ color }) => color || '#667085'};
+  font-size: ${({ fontSize, theme }) =>
+    fontSize || theme['xs-font'] || '0.875rem'};
   font-style: normal;
   font-weight: 500;
   line-height: 1.25rem;
   letter-spacing: -0.01263rem;
-  color: #101828;
+  color: ${({ color }) => color || '#101828'};
 `;
 
 export const StyledTextarea = styled.textarea<StyledTextareaProps>`
   font-family: Georgia, 'Times New Roman', Times, serif;
   outline: none;
   color: #101828;
-  font-size: 1rem;
+  color: ${({ color }) => color || '#101828'};
+  font-size: ${({ fontSize, theme }) => fontSize || theme['sm-font'] || '1rem'};
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem; /* 150% */
-  padding: 0.625rem 0.875rem;
-  border-radius: 0.5rem;
-  border: 1px solid #d0d5dd;
-  background: #fff;
-  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  padding: ${({ theme }) =>
+    `${theme['fluid-block-space-2']} ${theme['fluid-block-space-3']}` ||
+    '0.625rem 0.875rem'};
   width: 320px;
   height: 128px;
   resize: none;
@@ -37,10 +42,7 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
   transition: 0.3s ease;
 
   border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
-  border: 1px solid #d0d5dd;
-  border-color: ${({ borderColor }) => borderColor || '#d0d5dd'};
-  border-width: ${({ borderWidth }) => borderWidth || '1px'};
-  border-style: ${({ borderStyle }) => borderStyle || 'solid'};
+  border: ${({ border }) => border || '1px solid #d0d5dd'};
   background: ${({ background }) => background || '#fff'};
   box-shadow: ${({ boxShadow }) =>
     boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
@@ -59,7 +61,8 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
 
   &::placeholder {
     color: ${({ placeholderStyles }) => placeholderStyles?.color || '#667085'};
-    font-size: 1rem;
+    font-size: ${({ fontSize, theme }) =>
+      fontSize || theme['sm-font'] || '1rem'};
     font-style: normal;
     font-weight: 400;
     line-height: 1.5rem; /* 150% */
@@ -76,6 +79,7 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
     error &&
     css`
       border: 1px solid #fda29b;
+
       &:hover {
         border: 1px solid #fda29b;
         box-shadow: 0px 0px 0px 4px #fee4e2,
@@ -85,8 +89,9 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
 `;
 
 export const StyledTextareaHint = styled.span<TextareaHintProps>`
-  color: #667085;
-  font-size: 0.875rem;
+  color: ${({ color }) => color || '#667085'};
+  font-size: ${({ fontSize, theme }) =>
+    fontSize || theme['xs-font'] || '0.875rem'};
   font-style: normal;
   font-weight: 500;
   line-height: 1.25rem;
