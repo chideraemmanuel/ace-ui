@@ -2,36 +2,47 @@ import styled, { css } from 'styled-components';
 import { StyledButtonProps, StyledIconProps } from './Button.types';
 
 export const StyledButton = styled.a<StyledButtonProps>`
+  font-family: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
   cursor: pointer;
   text-decoration: none;
-  border: 1px solid ${({ background }) => background || '#121212'};
-  gap: ${({ theme }) => theme['space-1']};
+  border: ${({ border, background, theme }) =>
+    border || `1px solid ${background || theme['primary-color'] || '#121212'}`};
+  gap: ${({ theme }) => theme['fluid-inline-space-1']};
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   /* CUSTOM */
   border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
-  background: ${({ background }) => background || '#121212'};
+  background: ${({ background, theme }) =>
+    background || theme['primary-color'] || '#121212'};
   color: ${({ color }) => color || '#fff'};
-  padding: ${({ padding }) => padding};
   width: ${({ width }) => width};
   transition: 0.2s ease;
+
+  font-size: ${({ fontSize, theme }) =>
+    fontSize === 'xs' ||
+    fontSize === 'sm' ||
+    fontSize === 'base' ||
+    fontSize === 'md' ||
+    fontSize === 'lg' ||
+    fontSize === 'xl' ||
+    fontSize === '2xl' ||
+    fontSize === '3xl'
+      ? `${theme[`${fontSize}-font`]}`
+      : fontSize};
 
   &:hover {
     background: ${({ hover }) => hover?.background || '#272727'};
     color: ${({ hover }) => hover?.color || '#fff'};
-    border: 1px solid ${({ hover }) => hover?.background || '#272727'};
+    border: ${({ hover }) =>
+      hover?.border || `1px solid ${hover?.background || '#272727'}`};
     /* box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05); */
   }
 
   &:focus {
-    border: 1px solid ${({ focus }) => focus?.background || '#121212'};
-    border-color: ${({ focus }) => focus?.borderColor || '#121212'};
-    border-width: ${({ focus }) => focus?.borderWidth || '1px'};
-    border-style: ${({ focus }) => focus?.borderStyle || 'solid'};
-    background: ${({ focus }) => focus?.background || '#121212'};
+    border: ${({ focus }) =>
+      focus?.border || `1px solid ${focus?.background || '#121212'}`};
     color: ${({ focus }) => focus?.color || '#fff'};
     box-shadow: 0px 0px 0px 4px #f4ebff, 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   }
@@ -79,10 +90,8 @@ export const StyledButton = styled.a<StyledButtonProps>`
       }
 
       &:focus {
-        border: 1px solid ${focus?.background || '#F5F5F5'};
-        border-color: ${focus?.borderColor || '#F5F5F5'};
-        border-width: ${focus?.borderWidth || '1px'};
-        border-style: ${focus?.borderStyle || 'solid'};
+        border: ${focus?.border ||
+        `1px solid ${focus?.background || '#F5F5F5'}`};
         background: ${focus?.background || '#E0E0E0'};
         color: ${focus?.color || '#121212'};
         box-shadow: 0px 0px 0px 4px #f4ebff,
@@ -117,104 +126,94 @@ export const StyledButton = styled.a<StyledButtonProps>`
   /************************************
    Size Variants 
   *************************************/
-  ${({ size, padding }) =>
+  ${({ size, padding, theme, fontSize }) =>
     size === 'sm' &&
     css`
       padding: ${padding && padding.length > 0
         ? padding
-        : '0.5rem 0.88rem'} !important;
-      font-size: 0.875rem;
+        : `${theme['fluid-block-space-1']} ${theme['fluid-inline-space-3']}`} !important;
+      // '0.5rem 0.88rem'
+      font-size: ${!fontSize || fontSize?.length < 1
+        ? theme['xs-font']
+        : undefined};
+
+      svg {
+        width: ${!fontSize || fontSize?.length < 1
+          ? theme['xs-font']
+          : undefined};
+        aspect-ratio: 1 / 1;
+      }
     `}
 
-  ${({ size, padding, theme }) =>
+  ${({ size, padding, theme, fontSize }) =>
     size === 'md' &&
     css`
       padding: ${padding && padding.length > 0
         ? padding
-        : `0.62rem ${theme['space-4']}`} !important;
-      font-size: 0.875rem;
+        : `${theme['fluid-block-space-2']} ${theme['fluid-inline-space-3']}`} !important;
+      font-size: ${!fontSize || fontSize?.length < 1
+        ? theme['xs-font']
+        : undefined};
+
+      svg {
+        width: ${!fontSize || fontSize?.length < 1
+          ? theme['xs-font']
+          : undefined};
+        aspect-ratio: 1 / 1;
+      }
     `}
 
-  ${({ size, padding }) =>
+  ${({ size, padding, theme, fontSize }) =>
     size === 'lg' &&
     css`
       padding: ${padding && padding.length > 0
         ? padding
-        : '0.62rem 1.12rem'} !important;
-      font-size: 1rem;
+        : `${theme['fluid-block-space-2']} ${theme['fluid-inline-space-4']}`} !important;
+      /* : '0.62rem 1.12rem'} !important; */
+      font-size: ${!fontSize || fontSize?.length < 1
+        ? theme['sm-font']
+        : undefined};
+
+      svg {
+        width: ${!fontSize || fontSize?.length < 1
+          ? theme['sm-font']
+          : undefined};
+        aspect-ratio: 1 / 1;
+      }
     `}
 
-  ${({ size, padding }) =>
+  ${({ size, padding, theme, fontSize }) =>
     size === 'xl' &&
     css`
       padding: ${padding && padding.length > 0
         ? padding
-        : '0.75rem 1.25rem'} !important;
-      font-size: 1rem;
+        : `${theme['fluid-block-space-3']} ${theme['fluid-inline-space-5']}`} !important;
+      /* : '0.75rem 1.25rem'} !important; */
+      font-size: ${({ theme }) => theme['sm-font']} !important;
+
+      svg {
+        font-size: ${!fontSize || fontSize?.length < 1
+          ? theme['sm-font']
+          : undefined};
+        aspect-ratio: 1 / 1;
+      }
     `}
 
-  ${({ size, padding }) =>
+  ${({ size, padding, theme, fontSize }) =>
     size === '2xl' &&
     css`
       padding: ${padding && padding.length > 0
         ? padding
-        : '1rem 1.75rem'} !important;
-      font-size: 1.125rem;
-    `}
+        : `${theme['fluid-block-space-3']} ${theme['fluid-inline-space-6']}`} !important;
+      /* : '1rem 1.75rem'} !important; */
+      font-size: ${({ theme }) => theme['base-font']} !important;
 
-  /************************************
-   Icon Variants 
-  *************************************/
-      ${({ iconPosition }) =>
-    iconPosition === 'end' &&
-    css`
-      flex-direction: row-reverse !important;
-    `}
-`;
-
-export const StyledButtonIcon = styled.span<StyledIconProps>`
-  display: inline-block;
-
-  svg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: ${({ iconSize }) =>
-      iconSize && iconSize.length > 0 ? iconSize : '1rem'};
-    aspect-ratio: 1 / 1;
-  }
-
-  /************************************
-   Size Variants 
-  *************************************/
-
-  ${({ buttonSize, iconSize }) =>
-    buttonSize === 'sm' &&
-    css`
-      width: ${iconSize && iconSize.length > 0 ? iconSize : '0.875rem'};
-    `}
-
-  ${({ buttonSize, iconSize }) =>
-    buttonSize === 'md' &&
-    css`
-      width: ${iconSize && iconSize.length > 0 ? iconSize : '0.875rem'};
-    `}
-
-  ${({ buttonSize, iconSize }) =>
-    buttonSize === 'lg' &&
-    css`
-      width: ${iconSize && iconSize.length > 0 ? iconSize : '1rem'};
-    `}
-
-  ${({ buttonSize, iconSize }) =>
-    buttonSize === 'xl' &&
-    css`
-      width: ${iconSize && iconSize.length > 0 ? iconSize : '1rem'};
-    `}
-
-  ${({ buttonSize, iconSize }) =>
-    buttonSize === '2xl' &&
-    css`
-      width: ${iconSize && iconSize.length > 0 ? iconSize : '1.125rem'};
+      svg {
+        width: ${theme['base-font']};
+        font-size: ${!fontSize || fontSize?.length < 1
+          ? theme['base-font']
+          : undefined};
+        aspect-ratio: 1 / 1;
+      }
     `}
 `;

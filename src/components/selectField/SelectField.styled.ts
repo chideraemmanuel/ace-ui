@@ -4,7 +4,7 @@ import { SelectFieldToggleProps, StyledListProps } from './SelectField.types';
 export const StyledSelectFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: ${({ theme }) => theme['fluid-block-space-1'] || '0.5rem'};
   position: relative;
 `;
 
@@ -17,12 +17,11 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
         /* border: 1px solid #d6bbfb;
         box-shadow: 0px 0px 0px 4px #f4ebff,
           0px 1px 2px 0px rgba(16, 24, 40, 0.05); */
-        border: 1px solid
-          ${({ focusRing }) => focusRing?.borderColor || '#d6bbfb'};
-        box-shadow: ${({ focusRing }) =>
+        border: ${({ border }) => border || '1px solid #d6bbfb'};
+        box-shadow: ${({ focus }) =>
           `0px 0px 0px 4px ${
-            focusRing?.boxShadowColor ? focusRing?.boxShadowColor : '#f4ebff'
-          } 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
+            focus?.boxShadowColor ? focus?.boxShadowColor : '#f4ebff'
+          }, 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
 
         .chevron {
           transform: rotate(-180deg);
@@ -38,16 +37,11 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     justify-content: space-between;
     padding: 0.625rem 0.875rem;
     gap: 0.5rem;
-    /* border-radius: 0.5rem; */
     border: 1px solid #d0d5dd;
-    /* box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05); */
-    /* background: #fff; */
     cursor: pointer;
     transition: 0.2s ease;
     border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
-    border-color: ${({ borderColor }) => borderColor || '#d0d5dd'};
-    border-width: ${({ borderWidth }) => borderWidth || '1px'};
-    border-style: ${({ borderStyle }) => borderStyle || 'solid'};
+    border: ${({ border }) => border || `1px solid #d0d5dd`};
     background: ${({ background }) => background || '#fff'};
     box-shadow: ${({ boxShadow }) =>
       boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
@@ -59,12 +53,11 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     } */
 
     &:hover {
-      border: 1px solid
-        ${({ focusRing }) => focusRing?.borderColor || '#d6bbfb'};
-      box-shadow: ${({ focusRing }) =>
+      border: ${({ focus }) => focus?.border || '1px solid #d6bbfb'};
+      box-shadow: ${({ focus }) =>
         `0px 0px 0px 4px ${
-          focusRing?.boxShadowColor ? focusRing?.boxShadowColor : '#f4ebff'
-        } 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
+          focus?.boxShadowColor ? focus?.boxShadowColor : '#f4ebff'
+        }, 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
     }
   }
 

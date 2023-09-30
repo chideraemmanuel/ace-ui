@@ -20,9 +20,9 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
     &:checked {
       + label {
         /* border: 1px solid #7f56d9; */
-        /* makes border same color with check svg */
-        border: 1px solid ${({ color }) => color || '#7f56d9'};
-        background: ${({ background }) => background?.checked || '#7f56d9'};
+        border: 1px solid
+          ${({ background }) => background?.checked || '#2b3467'};
+        background: ${({ background }) => background?.checked || '#2b3467'};
 
         svg {
           visibility: visible;
@@ -117,11 +117,11 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
         &:checked {
           + label {
             /* makes border same color with check svg */
-            border: 1px solid ${color || '#7f56d9'};
+            border: 1px solid ${color || '#2b3467'};
             background: ${background?.checked || '#f9f5ff'};
 
             svg {
-              color: ${color || '#7f56d9'};
+              color: ${color || '#2b3467'};
             }
           }
         }

@@ -31,21 +31,21 @@ const SelectField: React.FC<ComponentProps> = ({
   // const [selectedOption, setSelectedOption] = useState<null | string>(null);
   // const [selectedIcon, setSelectedIcon] = useState<any>(null);
 
-  const newToggleStyles = {
-    ...toggleStyles,
-    borderColor: 'red',
-    borderRadius: '30px',
-  };
+  // const newToggleStyles = {
+  //   ...toggleStyles,
+  //   borderColor: 'red',
+  //   borderRadius: '30px',
+  // };
 
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>, icon?: any) => {
     state?.setSelectedOption(e.target.value);
-    state?.setSelectedIcon(icon);
+    state?.setSelectedIcon && state?.setSelectedIcon(icon);
   };
 
   return (
     <StyledSelectFieldContainer>
       {/* <StyledSelectFieldToggle {...toggleStyles}> */}
-      <StyledSelectFieldToggle {...newToggleStyles}>
+      <StyledSelectFieldToggle {...toggleStyles}>
         <input
           type="checkbox"
           name="checkbox"

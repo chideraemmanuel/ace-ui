@@ -7,21 +7,21 @@ export interface ComponentProps {
   list?: ListTypes[];
   state?: {
     selectedOption: string | null;
-    setSelectedOption: React.Dispatch<React.SetStateAction<string | null>>;
+    // setSelectedOption: React.Dispatch<React.SetStateAction<string | null>>;
+    setSelectedOption: (value: string) => void;
     selectedIcon?: any;
-    setSelectedIcon?: React.Dispatch<any>;
+    // setSelectedIcon?: React.Dispatch<any>;
+    setSelectedIcon?: (icon: any) => void;
   };
   //
   toggleStyles?: {
     borderRadius?: string;
-    borderColor?: string;
-    borderWidth?: string;
-    borderStyle?: string;
+    border?: string;
     background?: string;
     // padding:
     boxShadow?: string;
-    focusRing?: {
-      borderColor?: string;
+    focus?: {
+      border?: string;
       boxShadowColor?: string;
     };
   };
@@ -38,14 +38,12 @@ export interface ListTypes {
 
 export interface SelectFieldToggleProps {
   borderRadius?: string;
-  borderColor?: string;
-  borderWidth?: string;
-  borderStyle?: string;
+  border?: string;
   background?: string;
   // padding:
   boxShadow?: string;
-  focusRing?: {
-    borderColor?: string;
+  focus?: {
+    border?: string;
     boxShadowColor?: string;
   };
 }
