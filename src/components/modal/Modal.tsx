@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { StyledModal, StyledModalOvarlay } from './Modal.styled';
 import { ComponentProps } from './Modal.types';

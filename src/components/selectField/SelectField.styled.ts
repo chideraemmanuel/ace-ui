@@ -31,7 +31,8 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
   }
 
   label {
-    width: 20rem;
+    /* width: 20rem; */
+    width: min(100%, 20rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -98,7 +99,8 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
 `;
 
 export const StyledSelectFieldList = styled.div<StyledListProps>`
-  width: 20rem;
+  /* width: 20rem; */
+  width: min(100%, 20rem);
   max-height: 20rem;
   border-radius: 0.5rem;
   border: 1px solid #f2f4f7;

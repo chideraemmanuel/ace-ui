@@ -14,19 +14,18 @@ This is a library of fully customizable React UI components that can be used to 
 To get started, install the library using npm:
 
 ```
-$ npm install my-react-component-library
+$ npm install @aceui/components
 ```
 
 Once installed, wrap your root component with the `ThemeProvider` and pass in a `theme` object:
 
 ```javascript
-import { ThemeProvider } from '@aceui/components';
-import { theme } from '@aceui/components/theme';
+import { ThemeProvider, theme } from '@aceui/components';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">... // rest of your code</div>
+      <div className="App">...</div>
     </ThemeProvider>
   );
 };

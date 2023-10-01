@@ -1,8 +1,8 @@
 {
   "name": "@aceui/components",
-  "version": "1.0.0",
-  "description": "A library of reusable React components that can be used to build beautiful and functional user interfaces.",
-  "main": "./dist/cjs/index.js",
+  "version": "1.0.2",
+  "description": "A library of fully customizable React UI components that can be used to build beautiful and functional user interfaces.",
+  "main": "./dist/esm/index.js",
   "module": "./dist/esm/index.js",
   "type": "module",
   "files": [
@@ -18,8 +18,8 @@
     "Open source"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "build-test": "tsc",
+    "build": "tsc -p tsconfig.json",
+    "build-both": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "rollup": "rollup -c",
     "prepare": "npm run build"
   },

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { StyledButton } from './Button.styled';
 import { FaGoogle } from 'react-icons/fa';
