@@ -36,8 +36,10 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.625rem 0.875rem;
-    gap: 0.5rem;
+    /* padding: 0.625rem 0.875rem; */
+    padding: ${({ theme }) =>
+      `${theme['fluid-block-space-2']} ${theme['fluid-inline-space-3']}`};
+    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
     border: 1px solid #d0d5dd;
     cursor: pointer;
     transition: 0.2s ease;
@@ -62,16 +64,18 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     }
   }
 
-  .toggle-right {
+  .toggle-left {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
 
-    > div {
+    > .icon {
       display: flex;
       align-items: center;
-      width: 1.25rem;
-      height: 1.25rem;
+      /* width: 1.25rem;
+      height: 1.25rem; */
+      width: ${({ theme }) => theme['fluid-inline-space-4'] || '1.25rem'};
+      aspect-ratio: 1 / 1;
 
       > * {
         width: 100%;
@@ -79,12 +83,36 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
       }
     }
 
+    /* > div:last-child {
+      width: 70%;
+      background-color: red;
+
+      span {
+        color: #667085;
+        font-size: ${({ fontSize, theme }) =>
+      fontSize || theme['sm-font'] || '1rem'};
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5rem;
+        max-width: 100%;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    } */
+
     span {
       color: #667085;
-      font-size: 1rem;
+      font-size: ${({ fontSize, theme }) =>
+        fontSize || theme['sm-font'] || '1rem'};
       font-style: normal;
       font-weight: 400;
-      line-height: 1.5rem; /* 150% */
+      line-height: 1.5rem;
+
+      /* overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; */
     }
   }
 
@@ -92,8 +120,10 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     // chevron
     display: flex;
     align-items: center;
-    width: 1.25rem;
-    height: 1.25rem;
+    /* width: 1.25rem; */
+    /* height: 1.25rem; */
+    width: ${({ theme }) => theme['fluid-inline-space-4'] || '1.25rem'};
+    aspect-ratio: 1 / 1;
     transition: 0.2s ease;
   }
 `;
@@ -133,7 +163,7 @@ export const StyledSelectFieldListItem = styled.div`
 
         .check {
           display: inline-block;
-          color: #7f56d9;
+          color: #2b3467;
         }
       }
     }
@@ -145,7 +175,7 @@ export const StyledSelectFieldListItem = styled.div`
     justify-content: space-between;
     width: 100%;
     padding: 0.625rem 0.875rem;
-    gap: 0.5rem;
+    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
     transition: 0.1s ease;
     cursor: pointer;
 
@@ -154,14 +184,16 @@ export const StyledSelectFieldListItem = styled.div`
     }
   }
 
-  .item-right {
+  .item-left {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
 
     .icon {
-      width: 1.25rem;
-      height: 1.25rem;
+      /* width: 1.25rem;
+      height: 1.25rem; */
+      width: ${({ theme }) => theme['fluid-inline-space-4'] || '1.25rem'};
+      aspect-ratio: 1 / 1;
 
       > * {
         width: 100%;

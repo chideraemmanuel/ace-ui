@@ -24,6 +24,8 @@ import { ComponentProps } from './SelectField.types';
 // ];
 
 const SelectField: React.FC<ComponentProps> = ({
+  id,
+  fontSize,
   placeholder,
   state,
   list,
@@ -47,16 +49,16 @@ const SelectField: React.FC<ComponentProps> = ({
   return (
     <StyledSelectFieldContainer>
       {/* <StyledSelectFieldToggle {...toggleStyles}> */}
-      <StyledSelectFieldToggle {...toggleStyles}>
+      <StyledSelectFieldToggle {...toggleStyles} fontSize={fontSize}>
         <input
           type="checkbox"
-          name="checkbox"
-          id="checkbox"
+          name={id}
+          id={id}
           checked={dropdownActive}
           onChange={(e) => setDropdownActive(e.target.checked)}
         />
-        <label htmlFor="checkbox">
-          <div className="toggle-right">
+        <label htmlFor={id}>
+          <div className="toggle-left">
             {state?.selectedIcon && (
               <div className="icon">{state?.selectedIcon}</div>
             )}
@@ -70,7 +72,7 @@ const SelectField: React.FC<ComponentProps> = ({
         </label>
       </StyledSelectFieldToggle>
 
-      <StyledSelectFieldList active={dropdownActive}>
+      <StyledSelectFieldList active={dropdownActive} fontSize={fontSize}>
         {list?.map((item, index) => (
           <StyledSelectFieldListItem
             onClick={() => setDropdownActive(false)}
@@ -86,7 +88,7 @@ const SelectField: React.FC<ComponentProps> = ({
               onChange={(e) => handleSelect(e, item.icon)}
             />
             <label htmlFor={item.value}>
-              <div className="item-right">
+              <div className="item-left">
                 {item.icon && <div className="icon">{item.icon}</div>}
                 <span>{item.title}</span>
               </div>

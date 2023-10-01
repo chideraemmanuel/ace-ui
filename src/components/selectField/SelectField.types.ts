@@ -1,4 +1,6 @@
 export interface ComponentProps {
+  id: string;
+  fontSize?: string;
   icon?: {
     active?: boolean;
     icon?: any;
@@ -37,6 +39,7 @@ export interface ListTypes {
 }
 
 export interface SelectFieldToggleProps {
+  fontSize?: string;
   borderRadius?: string;
   border?: string;
   background?: string;
@@ -50,4 +53,5 @@ export interface SelectFieldToggleProps {
 
 export interface StyledListProps {
   active?: boolean;
+  fontSize?: string;
 }

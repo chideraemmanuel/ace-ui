@@ -1,5 +1,5 @@
 import './App.scss';
-import { Button } from './components/index';
+import { Button, SelectField } from './components/index';
 
 const App: React.FC = () => {
   return (
@@ -8,12 +8,16 @@ const App: React.FC = () => {
       <br />
       <br />
       <Button
-        text="Button"
+        children="Button"
         variant="primary"
         borderRadius="50px"
         size="sm"
         width="100%"
       />
+      <br />
+      <br />
+
+      <SelectField placeholder="Select something!" />
     </>
   );
 };
