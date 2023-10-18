@@ -138,6 +138,7 @@ export const StyledSelectFieldList = styled.div<StyledListProps>`
   box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03),
     0px 12px 16px -4px rgba(16, 24, 40, 0.08);
   position: absolute;
+  z-index: 10;
   top: 90%;
   visibility: hidden;
   opacity: 0;
@@ -206,3 +207,7 @@ export const StyledSelectFieldListItem = styled.div`
     display: none;
   }
 `;
+
+// export const StyledSelectFieldOverlay = styled.div`
+
+// `

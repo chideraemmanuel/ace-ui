@@ -8,12 +8,16 @@ export interface ComponentProps {
   placeholder?: string;
   list?: ListTypes[];
   state?: {
-    selectedOption: string | null;
-    // setSelectedOption: React.Dispatch<React.SetStateAction<string | null>>;
-    setSelectedOption: (value: string) => void;
+    // selectedOption: string | null;
+    selectedOption: {
+      title: string | null;
+      value: string | null;
+    } | null;
+    // setSelectedOption: (selected: { title: string; value: string }) => void;
+    setSelectedOption: any;
     selectedIcon?: any;
-    // setSelectedIcon?: React.Dispatch<any>;
-    setSelectedIcon?: (icon: any) => void;
+    // setSelectedIcon?: (icon: any) => void;
+    setSelectedIcon?: any;
   };
   //
   toggleStyles?: {

@@ -7,10 +7,10 @@ import {
   StyledSelectFieldListItem,
   StyledSelectFieldToggle,
 } from './SelectField.styled';
-import { FiCheck, FiChevronDown } from 'react-icons/fi';
+import { FiCheck, FiChevronDown, FiUser, FiUserPlus } from 'react-icons/fi';
 import { ComponentProps } from './SelectField.types';
 
-// const dummy: ListProps[] = [
+// const dummy = [
 //   {
 //     title: 'John Doe',
 //     value: 'John Doe',
@@ -42,9 +42,11 @@ const SelectField: React.FC<ComponentProps> = ({
   // };
 
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>, icon?: any) => {
-    state?.setSelectedOption(e.target.value);
+    state?.setSelectedOption({ title: e.target.title, value: e.target.value });
     state?.setSelectedIcon && state?.setSelectedIcon(icon);
   };
+
+  console.log(state?.selectedOption);
 
   return (
     <StyledSelectFieldContainer>
@@ -63,7 +65,9 @@ const SelectField: React.FC<ComponentProps> = ({
               <div className="icon">{state?.selectedIcon}</div>
             )}
             {!state?.selectedOption && <span>{placeholder}</span>}
-            {state?.selectedOption && <span>{state?.selectedOption}</span>}
+            {state?.selectedOption?.title && (
+              <span>{state?.selectedOption.title}</span>
+            )}
           </div>
 
           <div className="chevron">
@@ -83,7 +87,7 @@ const SelectField: React.FC<ComponentProps> = ({
               name="data"
               value={item.value}
               id={item.value}
-              checked={state?.selectedOption === item.value}
+              checked={state?.selectedOption?.value === item.value}
               //   onChange={(e) => setSelectedOption(e.target.value)}
               onChange={(e) => handleSelect(e, item.icon)}
             />
