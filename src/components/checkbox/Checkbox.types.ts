@@ -58,9 +58,9 @@ export interface ComponentProps {
 }
 
 export interface StyledCheckboxProps {
-  size?: 'sm' | 'md';
-  variant?: 'fill' | 'outline';
-  background?: {
+  $size?: 'sm' | 'md';
+  $variant?: 'fill' | 'outline';
+  $background?: {
     checked?: string;
     unchecked?: string;
   };
@@ -68,19 +68,19 @@ export interface StyledCheckboxProps {
   //   checked: string;
   //   unchecked: string;
   // };
-  color?: string;
-  focus?: {
+  $color?: string;
+  $focus?: {
     checked?: string;
     unchecked?: string;
   };
-  disabled?: boolean;
+  $disabled?: boolean;
 }
 
 export interface CheckboxTitleProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
+  $fontSize?: string;
+  $color?: string;
+  $fontStyle?: 'italic' | 'normal';
+  $fontWeight?:
     | '100'
     | '200'
     | '300'
@@ -90,14 +90,14 @@ export interface CheckboxTitleProps {
     | '700'
     | '800'
     | '900';
-  lineHeight?: string;
+  $lineHeight?: string;
 }
 
 export interface CheckboxHintProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
+  $fontSize?: string;
+  $color?: string;
+  $fontStyle?: 'italic' | 'normal';
+  $fontWeight?:
     | '100'
     | '200'
     | '300'
@@ -107,5 +107,5 @@ export interface CheckboxHintProps {
     | '700'
     | '800'
     | '900';
-  lineHeight?: string;
+  $lineHeight?: string;
 }

@@ -21,8 +21,8 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
       + label {
         /* border: 1px solid #7f56d9; */
         border: 1px solid
-          ${({ background }) => background?.checked || '#2b3467'};
-        background: ${({ background }) => background?.checked || '#2b3467'};
+          ${({ $background }) => $background?.checked || '#2b3467'};
+        background: ${({ $background }) => $background?.checked || '#2b3467'};
 
         svg {
           visibility: visible;
@@ -43,27 +43,27 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
     border-radius: 0.25rem;
     /* border-radius: 0.375rem; */
     border: 1px solid #d0d5dd;
-    background: ${({ background }) => background?.unchecked || '#fff'};
+    background: ${({ $background }) => $background?.unchecked || '#fff'};
     cursor: pointer;
 
     &:hover {
       box-shadow: 0px 0px 0px 4px
-        ${({ focus }) => focus?.unchecked || '#f4ebff'};
+        ${({ $focus }) => $focus?.unchecked || '#f4ebff'};
     }
 
     svg {
       width: 1.125rem;
       height: 1.125rem;
       visibility: hidden;
-      color: ${({ color }) => color || '#fff'};
+      color: ${({ $color }) => $color || '#fff'};
     }
   }
 
   /************************************
     DISABLED
     *************************************/
-  ${({ disabled }) =>
-    disabled &&
+  ${({ $disabled }) =>
+    $disabled &&
     css`
       input {
         &:checked {
@@ -94,8 +94,8 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   /************************************
     SIZES
     *************************************/
-  ${({ size }) =>
-    size === 'sm' &&
+  ${({ $size }) =>
+    $size === 'sm' &&
     css`
       input {
       }
@@ -110,15 +110,15 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   /************************************
     VARIANT
     *************************************/
-  ${({ variant, color, background }) =>
-    variant === 'outline' &&
+  ${({ $variant, color, $background }) =>
+    $variant === 'outline' &&
     css`
       input {
         &:checked {
           + label {
             /* makes border same color with check svg */
             border: 1px solid ${color || '#2b3467'};
-            background: ${background?.checked || '#f9f5ff'};
+            background: ${$background?.checked || '#f9f5ff'};
 
             svg {
               color: ${color || '#2b3467'};
@@ -141,10 +141,10 @@ export const StyledCheckboxInfo = styled.div`
 
 export const StyledCheckboxTitle = styled.span<CheckboxTitleProps>`
   color: ${({ color }) => color || '#344054'};
-  font-size: ${({ fontSize }) => fontSize || '1rem'};
-  font-style: ${({ fontStyle }) => fontStyle || 'normal'};
-  font-weight: ${({ fontWeight }) => fontWeight || '500'};
-  /* line-height: ${({ lineHeight }) => lineHeight || '1.5rem'}; */
+  font-size: ${({ $fontSize }) => $fontSize || '1rem'};
+  font-style: ${({ $fontStyle }) => $fontStyle || 'normal'};
+  font-weight: ${({ $fontWeight }) => $fontWeight || '500'};
+  /* line-height: ${({ $lineHeight }) => $lineHeight || '1.5rem'}; */
 `;
 
 export const StyledCheckboxHint = styled.span<CheckboxHintProps>`
@@ -153,9 +153,9 @@ export const StyledCheckboxHint = styled.span<CheckboxHintProps>`
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem; */
-  color: ${({ color }) => color || '#667085'};
-  font-size: ${({ fontSize }) => fontSize || '1rem'};
-  font-style: ${({ fontStyle }) => fontStyle || 'normal'};
-  font-weight: ${({ fontWeight }) => fontWeight || '500'};
-  /* line-height: ${({ lineHeight }) => lineHeight || '1.5rem'}; */
+  color: ${({ $color }) => $color || '#667085'};
+  font-size: ${({ $fontSize }) => $fontSize || '1rem'};
+  font-style: ${({ $fontStyle }) => $fontStyle || 'normal'};
+  font-weight: ${({ $fontWeight }) => $fontWeight || '500'};
+  /* line-height: ${({ $lineHeight }) => $lineHeight || '1.5rem'}; */
 `;

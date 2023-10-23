@@ -56,27 +56,27 @@ export interface ComponentProps {
 }
 
 export interface StyledToggleButtonProps {
-  size?: 'sm' | 'md';
-  background?: {
+  $size?: 'sm' | 'md';
+  $background?: {
     checked?: string;
     unchecked?: string;
   };
-  color?: {
+  $color?: {
     checked?: string;
     unchecked?: string;
   };
-  focus?: {
+  $focus?: {
     checked?: string;
     unchecked?: string;
   };
-  disabled?: boolean;
+  $disabled?: boolean;
 }
 
 export interface ToggleTitleProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
+  $fontSize?: string;
+  $color?: string;
+  $fontStyle?: 'italic' | 'normal';
+  $fontWeight?:
     | '100'
     | '200'
     | '300'
@@ -86,14 +86,14 @@ export interface ToggleTitleProps {
     | '700'
     | '800'
     | '900';
-  lineHeight?: string;
+  $lineHeight?: string;
 }
 
 export interface ToggleHintProps {
-  fontSize?: string;
-  color?: string;
-  fontStyle?: 'italic' | 'normal';
-  fontWeight?:
+  $fontSize?: string;
+  $color?: string;
+  $fontStyle?: 'italic' | 'normal';
+  $fontWeight?:
     | '100'
     | '200'
     | '300'
@@ -103,5 +103,5 @@ export interface ToggleHintProps {
     | '700'
     | '800'
     | '900';
-  lineHeight?: string;
+  $lineHeight?: string;
 }

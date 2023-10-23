@@ -21,7 +21,7 @@ const Tooltip: FC<ComponentProps> = ({
       <StyledTooltipContainer>
         <StyledTooltipTrigger>{trigger || <FiInfo />}</StyledTooltipTrigger>
 
-        <StyledTooltip arrow={arrow} background={background} color={color}>
+        <StyledTooltip $arrow={arrow} $background={background} $color={color}>
           {children}
           <svg
             xmlns="http://www.w3.org/2000/svg"

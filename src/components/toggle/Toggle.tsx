@@ -27,11 +27,11 @@ const Toggle: React.FC<ComponentProps> = ({
   return (
     <StyledToggleContainer>
       <StyledToggleButton
-        size={size}
-        background={toggleBackground}
-        color={toggleColor}
-        focus={focus}
-        disabled={disabled}
+        $size={size}
+        $background={toggleBackground}
+        $color={toggleColor}
+        $focus={focus}
+        $disabled={disabled}
       >
         <input
           type="checkbox"
@@ -110,11 +110,23 @@ const Toggle: React.FC<ComponentProps> = ({
       </StyledToggleButton>
 
       <StyledToggleInfo>
-        <StyledToggleTitle {...title}>
+        <StyledToggleTitle
+          $color={title?.color}
+          $fontSize={title?.fontSize}
+          $fontStyle={title?.fontStyle}
+          $fontWeight={title?.fontWeight}
+          $lineHeight={title?.lineHeight}
+        >
           {/* Remember me */}
           {title?.text}
         </StyledToggleTitle>
-        <StyledToggleHint {...hint}>
+        <StyledToggleHint
+          $color={hint?.color}
+          $fontSize={hint?.fontSize}
+          $fontStyle={hint?.fontStyle}
+          $fontWeight={hint?.fontWeight}
+          $lineHeight={hint?.lineHeight}
+        >
           {/* Save my login details for next time. */}
           {hint?.text}
         </StyledToggleHint>

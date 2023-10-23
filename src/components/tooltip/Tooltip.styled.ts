@@ -9,11 +9,12 @@ export const StyledTooltip = styled.div<StyledTooltipProps>`
   position: absolute;
   width: min(20rem, 90vw);
   /* max-width: 20rem; */
-  bottom: ${({ arrow }) => (arrow ? 'calc(100% + 10px)' : 'calc(100% + 5px)')};
+  bottom: ${({ $arrow }) =>
+    $arrow ? 'calc(100% + 10px)' : 'calc(100% + 5px)'};
   left: 50%;
   transform: translateX(-50%);
   border-radius: 0.5rem;
-  background: ${({ background }) => background || '#101828'};
+  background: ${({ $background }) => $background || '#101828'};
   padding: 0.75rem;
   box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03),
     0px 12px 16px -4px rgba(16, 24, 40, 0.08);
@@ -34,7 +35,7 @@ export const StyledTooltip = styled.div<StyledTooltipProps>`
     top: calc(100% - 1px);
     transform: translateX(-50%);
     left: 50%;
-    display: ${({ arrow }) => (arrow ? 'inline-block' : 'none')};
+    display: ${({ $arrow }) => ($arrow ? 'inline-block' : 'none')};
   }
 `;
 

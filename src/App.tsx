@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <br />
       <br />
 
-      <SelectField placeholder="Select something!" />
+      <SelectField placeholder="Select something!" id="ch" />
     </>
   );
 };

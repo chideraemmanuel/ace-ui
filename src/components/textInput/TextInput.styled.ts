@@ -18,9 +18,9 @@ export const StyledTextInputContainer = styled.label`
 `;
 
 export const StyledTextInputLabel = styled.span<TextInputLabelProps>`
-  color: ${({ color }) => color || '#101828'};
-  font-size: ${({ fontSize, theme }) =>
-    fontSize || theme['xs-font'] || '0.875rem'};
+  color: ${({ $color }) => $color || '#101828'};
+  font-size: ${({ $fontSize, theme }) =>
+    $fontSize || theme.font['xs-font'] || '0.875rem'};
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 1.225rem */
@@ -29,16 +29,16 @@ export const StyledTextInputLabel = styled.span<TextInputLabelProps>`
 
 export const StyledTextInput = styled.div<StyledTextInputProps>`
   /* border-radius: 0.5rem; */
-  border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
-  border: ${({ border }) => border || '1px solid #d0d5dd'};
-  background: ${({ background }) => background || '#fff'};
+  border-radius: ${({ $borderRadius }) => $borderRadius || '0.5rem'};
+  border: ${({ $border }) => $border || '1px solid #d0d5dd'};
+  background: ${({ $background }) => $background || '#fff'};
   /* padding: 0 0.875rem; */
-  padding: ${({ theme }) => `0 ${theme['fluid-block-space-3']}`};
-  box-shadow: ${({ boxShadow }) =>
-    boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
+  padding: ${({ theme }) => `0 ${theme.space['fluid-inline-space-3']}`};
+  box-shadow: ${({ $boxShadow }) =>
+    $boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
+  gap: ${({ theme }) => theme.space['fluid-inline-space-1'] || '0.5rem'};
   transition: 0.3s ease;
 
   /* &:hover {
@@ -48,19 +48,19 @@ export const StyledTextInput = styled.div<StyledTextInputProps>`
 
   &:hover,
   &:focus-within {
-    border: ${({ focus }) => focus?.border || '1px solid #d6bbfb'};
+    border: ${({ $focus }) => $focus?.border || '1px solid #d6bbfb'};
     box-shadow: 0px 0px 0px 4px
-      ${({ focus }) => focus?.boxShadowColor || '#f4ebff'};
+      ${({ $focus }) => $focus?.boxShadowColor || '#f4ebff'};
   }
 
   > div {
     display: flex;
     align-items: center;
-    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
+    gap: ${({ theme }) => theme.space['fluid-inline-space-1'] || '0.5rem'};
   }
 
   .help-icon {
-    font-size: ${({ theme }) => theme['sm-font'] || '1rem'};
+    font-size: ${({ theme }) => theme.font['sm-font'] || '1rem'};
     color: #667085;
     line-height: 140%;
     cursor: pointer;
@@ -69,8 +69,8 @@ export const StyledTextInput = styled.div<StyledTextInputProps>`
   /************************************
    Read Only
   *************************************/
-  ${({ readOnly }) =>
-    readOnly &&
+  ${({ $readOnly }) =>
+    $readOnly &&
     css`
       cursor: not-allowed;
       /* pointer-events: none; */
@@ -93,8 +93,8 @@ export const StyledTextInput = styled.div<StyledTextInputProps>`
   /************************************
    Error Variants
   *************************************/
-  ${({ error }) =>
-    error &&
+  ${({ $error }) =>
+    $error &&
     css`
       border: 1px solid #fda29b;
 
@@ -112,27 +112,29 @@ export const StyledTextInput = styled.div<StyledTextInputProps>`
 `;
 
 export const StyledTextInputField = styled.input<StyledInputFieldProps>`
-  font-size: ${({ fontSize, theme }) => fontSize || theme['sm-font'] || '1rem'};
+  font-size: ${({ $fontSize, theme }) =>
+    $fontSize || theme.font['sm-font'] || '1rem'};
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 1.4rem */
   letter-spacing: -0.01438rem;
   border: none;
   outline: none;
-  color: ${({ color }) => color || '#101828'};
+  color: ${({ $color }) => $color || '#101828'};
   /* padding: 0.625rem 0; */
-  padding: ${({ theme }) => `${theme['fluid-block-space-2']} 0}`};
-  background: ${({ background }) => background || '#fff'};
+  padding: ${({ theme }) => `${theme.space['fluid-block-space-2']} 0}`};
+  background: ${({ $background }) => $background || '#fff'};
 
   &::placeholder {
-    font-size: ${({ fontSize, theme }) =>
-      fontSize || theme['sm-font'] || '1rem'};
+    font-size: ${({ $fontSize, theme }) =>
+      $fontSize || theme.font['sm-font'] || '1rem'};
     font-style: normal;
     font-weight: 400;
     line-height: 140%; /* 1.4rem */
     letter-spacing: -0.01438rem;
     /* color: #; */
-    color: ${({ placeholderStyles }) => placeholderStyles?.color || '#667085'};
+    color: ${({ $placeholderStyles }) =>
+      $placeholderStyles?.color || '#667085'};
   }
 
   /* &:read-only {
@@ -151,8 +153,8 @@ export const StyledTextInputField = styled.input<StyledInputFieldProps>`
 `;
 
 export const StyledTextInputIcon = styled.span<TextInputIconProps>`
-  font-size: ${({ theme }) => theme['md-font'] || '1.25rem'};
-  color: ${({ color }) => color || '#667085'};
+  font-size: ${({ theme }) => theme.font['md-font'] || '1.25rem'};
+  color: ${({ $color }) => $color || '#667085'};
   /* line-height: 140%; */
   display: flex;
   align-items: center;
@@ -165,16 +167,17 @@ export const StyledTextInputHint = styled.div<TextInputHintProps>`
 
   span {
     /* color: #667085; */
-    color: ${({ color }) => color || '#667085'};
-    font-size: ${({ theme }) => theme['xs-font'] || '0.875rem'};
+    color: ${({ $color }) => $color || '#667085'};
+    font-size: ${({ $fontSize, theme }) =>
+      $fontSize || theme.font['xs-font'] || '0.875rem'};
     font-style: normal;
     font-weight: 500;
     line-height: 140%; /* 1.225rem */
     letter-spacing: -0.01263rem;
 
     /* Error */
-    ${({ error }) =>
-      error &&
+    ${({ $error }) =>
+      $error &&
       css`
         color: #fda29b;
       `}
@@ -182,7 +185,7 @@ export const StyledTextInputHint = styled.div<TextInputHintProps>`
 
   .forgot-password {
     color: #667085;
-    font-size: ${({ theme }) => theme['xs-font'] || '0.875rem'};
+    font-size: ${({ theme }) => theme.font['xs-font'] || '0.875rem'};
     font-style: normal;
     font-weight: 500;
     line-height: 140%; /* 1.225rem */

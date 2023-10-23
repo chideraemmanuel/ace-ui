@@ -10,18 +10,18 @@ import {
 import { FiCheck, FiChevronDown, FiUser, FiUserPlus } from 'react-icons/fi';
 import { ComponentProps } from './SelectField.types';
 
-// const dummy = [
-//   {
-//     title: 'John Doe',
-//     value: 'John Doe',
-//     icon: <FiUser />,
-//   },
-//   {
-//     title: 'Jane Doe',
-//     value: 'Jane Doe',
-//     icon: <FiUserPlus />,
-//   },
-// ];
+const dummy = [
+  {
+    title: 'John Doe',
+    value: 'John Doe',
+    icon: <FiUser />,
+  },
+  {
+    title: 'Jane Doe',
+    value: 'Jane Doe',
+    icon: <FiUserPlus />,
+  },
+];
 
 const SelectField: React.FC<ComponentProps> = ({
   id,
@@ -51,7 +51,17 @@ const SelectField: React.FC<ComponentProps> = ({
   return (
     <StyledSelectFieldContainer>
       {/* <StyledSelectFieldToggle {...toggleStyles}> */}
-      <StyledSelectFieldToggle {...toggleStyles} fontSize={fontSize}>
+      {dropdownActive && (
+        <div className="overlay" onClick={() => setDropdownActive(false)}></div>
+      )}
+      <StyledSelectFieldToggle
+        $borderRadius={toggleStyles?.borderRadius}
+        $border={toggleStyles?.border}
+        $background={toggleStyles?.background}
+        $boxShadow={toggleStyles?.boxShadow}
+        $focus={toggleStyles?.focus}
+        $fontSize={fontSize}
+      >
         <input
           type="checkbox"
           name={id}
@@ -76,8 +86,8 @@ const SelectField: React.FC<ComponentProps> = ({
         </label>
       </StyledSelectFieldToggle>
 
-      <StyledSelectFieldList active={dropdownActive} fontSize={fontSize}>
-        {list?.map((item, index) => (
+      <StyledSelectFieldList $active={dropdownActive} $fontSize={fontSize}>
+        {dummy?.map((item, index) => (
           <StyledSelectFieldListItem
             onClick={() => setDropdownActive(false)}
             key={index}

@@ -8,42 +8,46 @@ export const StyledButton = styled.a<StyledButtonProps>`
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
-  border: ${({ border, background, theme }) =>
-    border || `1px solid ${background || theme['primary-color'] || '#121212'}`};
-  gap: ${({ theme }) => theme['fluid-inline-space-1']};
+  border: ${({ $border, $background, theme }) =>
+    $border ||
+    `1px solid ${$background || theme['primary-color'] || '#121212'}`};
+  gap: ${({ theme }) => theme.space['fluid-inline-space-1']};
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   /* CUSTOM */
-  border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
-  background: ${({ background, theme }) =>
-    background || theme['primary-color'] || '#121212'};
-  color: ${({ color }) => color || '#fff'};
-  width: ${({ width }) => width};
+  border-radius: ${({ $borderRadius }) => $borderRadius || '0.5rem'};
+  background: ${({ $background, theme }) =>
+    $background || theme.colors['primary-color'] || '#121212'};
+  color: ${({ $color }) => $color || '#fff'};
+  width: ${({ $width }) => $width};
   transition: 0.2s ease;
+  font-style: ${({ $fontStyle }) => $fontStyle || 'normal'};
+  font-weight: ${({ $fontWeight }) => $fontWeight || '500'};
+  /* line-height: ${({ $lineHeight }) => $lineHeight || '1.5rem'}; */
 
-  font-size: ${({ fontSize, theme }) =>
-    fontSize === 'xs' ||
-    fontSize === 'sm' ||
-    fontSize === 'base' ||
-    fontSize === 'md' ||
-    fontSize === 'lg' ||
-    fontSize === 'xl' ||
-    fontSize === '2xl' ||
-    fontSize === '3xl'
-      ? `${theme[`${fontSize}-font`]}`
-      : fontSize};
+  font-size: ${({ $fontSize, theme }) =>
+    $fontSize === 'xs' ||
+    $fontSize === 'sm' ||
+    $fontSize === 'base' ||
+    $fontSize === 'md' ||
+    $fontSize === 'lg' ||
+    $fontSize === 'xl' ||
+    $fontSize === '2xl' ||
+    $fontSize === '3xl'
+      ? `${theme.font[`${$fontSize}-font`]}`
+      : $fontSize};
 
   &:hover {
-    background: ${({ hover }) => hover?.background || '#272727'};
-    color: ${({ hover }) => hover?.color || '#fff'};
-    border: ${({ hover }) =>
-      hover?.border || `1px solid ${hover?.background || '#272727'}`};
+    background: ${({ $hover }) => $hover?.background || '#272727'};
+    color: ${({ $hover }) => $hover?.color || '#fff'};
+    border: ${({ $hover }) =>
+      $hover?.border || `1px solid ${$hover?.background || '#272727'}`};
     /* box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05); */
   }
 
   &:focus {
-    border: ${({ focus }) =>
-      focus?.border || `1px solid ${focus?.background || '#121212'}`};
-    color: ${({ focus }) => focus?.color || '#fff'};
+    border: ${({ $focus }) =>
+      $focus?.border || `1px solid ${$focus?.background || '#121212'}`};
+    color: ${({ $focus }) => $focus?.color || '#fff'};
     box-shadow: 0px 0px 0px 4px #f4ebff, 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   }
 
@@ -54,8 +58,8 @@ export const StyledButton = styled.a<StyledButtonProps>`
     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   }
 
-  ${({ disabled }) =>
-    disabled &&
+  ${({ $disabled }) =>
+    $disabled &&
     css`
       border: 1px solid #e0e0e0;
       background: #e0e0e0;
@@ -74,26 +78,26 @@ export const StyledButton = styled.a<StyledButtonProps>`
   /************************************
    Type Variants 
   *************************************/
-    ${({ variant, color, background, hover, focus }) =>
-    variant === 'secondary' &&
+    ${({ $variant, $color, $background, $hover, $focus }) =>
+    $variant === 'secondary' &&
     css`
-      border: 1px solid ${background || '#e0e0e0'};
-      background: ${background || '#e0e0e0'};
-      color: ${color || '#121212'};
+      border: 1px solid ${$background || '#e0e0e0'};
+      background: ${$background || '#e0e0e0'};
+      color: ${$color || '#121212'};
       box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 
       &:hover {
-        background: ${hover?.background || '#B0B0B0'};
-        color: ${hover?.color || '#121212'};
-        border: 1px solid ${hover?.background || '#B0B0B0'};
+        background: ${$hover?.background || '#B0B0B0'};
+        color: ${$hover?.color || '#121212'};
+        border: 1px solid ${$hover?.background || '#B0B0B0'};
         /* box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05); */
       }
 
       &:focus {
-        border: ${focus?.border ||
-        `1px solid ${focus?.background || '#F5F5F5'}`};
-        background: ${focus?.background || '#E0E0E0'};
-        color: ${focus?.color || '#121212'};
+        border: ${$focus?.border ||
+        `1px solid ${$focus?.background || '#F5F5F5'}`};
+        background: ${$focus?.background || '#E0E0E0'};
+        color: ${$focus?.color || '#121212'};
         box-shadow: 0px 0px 0px 4px #f4ebff,
           0px 1px 2px 0px rgba(16, 24, 40, 0.05);
       }
@@ -105,9 +109,9 @@ export const StyledButton = styled.a<StyledButtonProps>`
         box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
       }
     `}
-      ${({ variant, disabled }) =>
-    variant === 'secondary' &&
-    disabled &&
+      ${({ $variant, $disabled }) =>
+    $variant === 'secondary' &&
+    $disabled &&
     css`
       border: 1px solid #f5f5f5;
       background: #f5f5f5;
@@ -126,92 +130,92 @@ export const StyledButton = styled.a<StyledButtonProps>`
   /************************************
    Size Variants 
   *************************************/
-  ${({ size, padding, theme, fontSize }) =>
-    size === 'sm' &&
+  ${({ $size, $padding, theme, $fontSize }) =>
+    $size === 'sm' &&
     css`
-      padding: ${padding && padding.length > 0
-        ? padding
-        : `${theme['fluid-block-space-1']} ${theme['fluid-inline-space-3']}`} !important;
+      padding: ${$padding && $padding.length > 0
+        ? $padding
+        : `${theme.space['fluid-block-space-1']} ${theme.space['fluid-inline-space-3']}`} !important;
       // '0.5rem 0.88rem'
-      font-size: ${!fontSize || fontSize?.length < 1
-        ? theme['xs-font']
+      font-size: ${!$fontSize || $fontSize?.length < 1
+        ? theme.font['xs-font']
         : undefined};
 
       svg {
-        width: ${!fontSize || fontSize?.length < 1
-          ? theme['xs-font']
+        width: ${!$fontSize || $fontSize?.length < 1
+          ? theme.font['xs-font']
           : undefined};
         aspect-ratio: 1 / 1;
       }
     `}
 
-  ${({ size, padding, theme, fontSize }) =>
-    size === 'md' &&
+  ${({ $size, $padding, theme, $fontSize }) =>
+    $size === 'md' &&
     css`
-      padding: ${padding && padding.length > 0
-        ? padding
-        : `${theme['fluid-block-space-2']} ${theme['fluid-inline-space-3']}`} !important;
-      font-size: ${!fontSize || fontSize?.length < 1
-        ? theme['xs-font']
+      padding: ${$padding && $padding.length > 0
+        ? $padding
+        : `${theme.space['fluid-block-space-2']} ${theme.space['fluid-inline-space-3']}`} !important;
+      font-size: ${!$fontSize || $fontSize?.length < 1
+        ? theme.font['xs-font']
         : undefined};
 
       svg {
-        width: ${!fontSize || fontSize?.length < 1
-          ? theme['xs-font']
+        width: ${!$fontSize || $fontSize?.length < 1
+          ? theme.font['xs-font']
           : undefined};
         aspect-ratio: 1 / 1;
       }
     `}
 
-  ${({ size, padding, theme, fontSize }) =>
-    size === 'lg' &&
+  ${({ $size, $padding, theme, $fontSize }) =>
+    $size === 'lg' &&
     css`
-      padding: ${padding && padding.length > 0
-        ? padding
-        : `${theme['fluid-block-space-2']} ${theme['fluid-inline-space-4']}`} !important;
+      padding: ${$padding && $padding.length > 0
+        ? $padding
+        : `${theme.space['fluid-block-space-2']} ${theme.space['fluid-inline-space-4']}`} !important;
       /* : '0.62rem 1.12rem'} !important; */
-      font-size: ${!fontSize || fontSize?.length < 1
-        ? theme['sm-font']
+      font-size: ${!$fontSize || $fontSize?.length < 1
+        ? theme.font['sm-font']
         : undefined};
 
       svg {
-        width: ${!fontSize || fontSize?.length < 1
-          ? theme['sm-font']
+        width: ${!$fontSize || $fontSize?.length < 1
+          ? theme.font['sm-font']
           : undefined};
         aspect-ratio: 1 / 1;
       }
     `}
 
-  ${({ size, padding, theme, fontSize }) =>
-    size === 'xl' &&
+  ${({ $size, $padding, theme, $fontSize }) =>
+    $size === 'xl' &&
     css`
-      padding: ${padding && padding.length > 0
-        ? padding
-        : `${theme['fluid-block-space-3']} ${theme['fluid-inline-space-5']}`} !important;
+      padding: ${$padding && $padding.length > 0
+        ? $padding
+        : `${theme.space['fluid-block-space-3']} ${theme.space['fluid-inline-space-5']}`} !important;
       /* : '0.75rem 1.25rem'} !important; */
-      font-size: ${({ theme }) => theme['sm-font']} !important;
+      font-size: ${({ theme }) => theme.font['sm-font']} !important;
 
       svg {
-        font-size: ${!fontSize || fontSize?.length < 1
-          ? theme['sm-font']
+        font-size: ${!$fontSize || $fontSize?.length < 1
+          ? theme.font['sm-font']
           : undefined};
         aspect-ratio: 1 / 1;
       }
     `}
 
-  ${({ size, padding, theme, fontSize }) =>
-    size === '2xl' &&
+  ${({ $size, $padding, theme, $fontSize }) =>
+    $size === '2xl' &&
     css`
-      padding: ${padding && padding.length > 0
-        ? padding
-        : `${theme['fluid-block-space-3']} ${theme['fluid-inline-space-6']}`} !important;
+      padding: ${$padding && $padding.length > 0
+        ? $padding
+        : `${theme.space['fluid-block-space-3']} ${theme.space['fluid-inline-space-6']}`} !important;
       /* : '1rem 1.75rem'} !important; */
-      font-size: ${({ theme }) => theme['base-font']} !important;
+      font-size: ${({ theme }) => theme.font['base-font']} !important;
 
       svg {
         width: ${theme['base-font']};
-        font-size: ${!fontSize || fontSize?.length < 1
-          ? theme['base-font']
+        font-size: ${!$fontSize || $fontSize?.length < 1
+          ? theme.font['base-font']
           : undefined};
         aspect-ratio: 1 / 1;
       }

@@ -13,6 +13,18 @@ export interface ComponentProps {
   color?: string;
   width?: string;
   fontSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | string;
+  fontWeight?:
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
+  fontStyle?: 'italic' | 'normal';
+  lineHeight?: string;
   hover?: {
     background?: string;
     color?: string;
@@ -28,31 +40,43 @@ export interface ComponentProps {
 
 export interface StyledButtonProps {
   // base
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  $size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   //   variants
-  variant?: 'primary' | 'secondary';
+  $variant?: 'primary' | 'secondary';
   // custom styling
-  border?: string;
-  borderRadius?: string;
-  padding?: string;
-  background?: string;
-  color?: string;
-  width?: string;
-  fontSize?: string;
+  $border?: string;
+  $borderRadius?: string;
+  $padding?: string;
+  $background?: string;
+  $color?: string;
+  $width?: string;
+  $fontSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | string;
+  $fontWeight?:
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
+  $fontStyle?: 'italic' | 'normal';
+  $lineHeight?: string;
   //
-  hover?: {
+  $hover?: {
     background?: string;
     color?: string;
     border?: string;
   };
-  focus?: {
+  $focus?: {
     background?: string;
     color?: string;
     border?: string;
   };
-  disabled?: boolean;
+  $disabled?: boolean;
 }
 
 export interface StyledIconProps {
-  buttonSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  $buttonSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 }

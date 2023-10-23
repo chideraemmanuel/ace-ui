@@ -52,18 +52,18 @@ const TextInput: React.FC<ComponentProps> = ({
       <StyledTextInputContainer htmlFor="input">
         <StyledTextInputLabel {...label}>{label?.text}</StyledTextInputLabel>
         <StyledTextInput
-          error={hint?.error}
-          readOnly={readOnly}
-          border={border}
-          borderRadius={borderRadius}
-          background={background}
+          $error={hint?.error}
+          $readOnly={readOnly}
+          $border={border}
+          $borderRadius={borderRadius}
+          $background={background}
           // padding:
-          boxShadow={boxShadow}
-          focus={focus}
+          $boxShadow={boxShadow}
+          $focus={focus}
         >
           <div>
             {icon?.active && (
-              <StyledTextInputIcon color={icon.color}>
+              <StyledTextInputIcon $color={icon.color}>
                 {!icon?.active ? undefined : type === 'text' ? (
                   icon.icon
                 ) : type === 'email' ? (
@@ -112,11 +112,11 @@ const TextInput: React.FC<ComponentProps> = ({
               }
               id="input"
               placeholder={placeholder?.text}
-              placeholderStyles={placeholder}
-              readOnly={readOnly}
-              background={background}
-              color={color}
-              fontSize={fontSize}
+              $placeholderStyles={placeholder}
+              $readOnly={readOnly}
+              $background={background}
+              $color={color}
+              $fontSize={fontSize}
               value={state?.value}
               onChange={(e) => state?.setValue(e)}
             />
@@ -144,7 +144,11 @@ const TextInput: React.FC<ComponentProps> = ({
           )}
         </StyledTextInput>
 
-        <StyledTextInputHint {...hint}>
+        <StyledTextInputHint
+          $error={hint?.error}
+          $color={hint?.color}
+          $fontSize={hint?.fontSize}
+        >
           <span>{hint?.text}</span>
           {forgotPassword && forgotPasswordAction && (
             <div

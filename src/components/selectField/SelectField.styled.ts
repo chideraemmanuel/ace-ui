@@ -4,8 +4,19 @@ import { SelectFieldToggleProps, StyledListProps } from './SelectField.types';
 export const StyledSelectFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme['fluid-block-space-1'] || '0.5rem'};
+  gap: ${({ theme }) => theme.space['fluid-block-space-1'] || '0.5rem'};
   position: relative;
+
+  .overlay {
+    position: fixed;
+    /* background-color: transparent; */
+    background-color: red;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+  }
 `;
 
 export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
@@ -14,13 +25,14 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
 
     &:checked {
       + label {
+        z-index: 12;
         /* border: 1px solid #d6bbfb;
         box-shadow: 0px 0px 0px 4px #f4ebff,
           0px 1px 2px 0px rgba(16, 24, 40, 0.05); */
-        border: ${({ border }) => border || '1px solid #d6bbfb'};
-        box-shadow: ${({ focus }) =>
+        border: ${({ $border }) => $border || '1px solid #d6bbfb'};
+        box-shadow: ${({ $focus }) =>
           `0px 0px 0px 4px ${
-            focus?.boxShadowColor ? focus?.boxShadowColor : '#f4ebff'
+            $focus?.boxShadowColor ? $focus?.boxShadowColor : '#f4ebff'
           }, 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
 
         .chevron {
@@ -38,16 +50,16 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     justify-content: space-between;
     /* padding: 0.625rem 0.875rem; */
     padding: ${({ theme }) =>
-      `${theme['fluid-block-space-2']} ${theme['fluid-inline-space-3']}`};
-    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
+      `${theme.space['fluid-block-space-2']} ${theme.space['fluid-inline-space-3']}`};
+    gap: ${({ theme }) => theme.space['fluid-inline-space-1'] || '0.5rem'};
     border: 1px solid #d0d5dd;
     cursor: pointer;
     transition: 0.2s ease;
-    border-radius: ${({ borderRadius }) => borderRadius || '0.5rem'};
-    border: ${({ border }) => border || `1px solid #d0d5dd`};
-    background: ${({ background }) => background || '#fff'};
-    box-shadow: ${({ boxShadow }) =>
-      boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
+    border-radius: ${({ $borderRadius }) => $borderRadius || '0.5rem'};
+    border: ${({ $border }) => $border || `1px solid #d0d5dd`};
+    background: ${({ $background }) => $background || '#fff'};
+    box-shadow: ${({ $boxShadow }) =>
+      $boxShadow || '0px 1px 2px 0px rgba(16, 24, 40, 0.05)'};
 
     /* &:hover {
       border: 1px solid #d6bbfb;
@@ -56,10 +68,10 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     } */
 
     &:hover {
-      border: ${({ focus }) => focus?.border || '1px solid #d6bbfb'};
-      box-shadow: ${({ focus }) =>
+      border: ${({ $focus }) => $focus?.border || '1px solid #d6bbfb'};
+      box-shadow: ${({ $focus }) =>
         `0px 0px 0px 4px ${
-          focus?.boxShadowColor ? focus?.boxShadowColor : '#f4ebff'
+          $focus?.boxShadowColor ? $focus?.boxShadowColor : '#f4ebff'
         }, 0px 1px 2px 0px rgba(16, 24, 40, 0.05)`};
     }
   }
@@ -67,14 +79,14 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
   .toggle-left {
     display: flex;
     align-items: center;
-    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
+    gap: ${({ theme }) => theme.space['fluid-inline-space-1'] || '0.5rem'};
 
     > .icon {
       display: flex;
       align-items: center;
       /* width: 1.25rem;
       height: 1.25rem; */
-      width: ${({ theme }) => theme['fluid-inline-space-4'] || '1.25rem'};
+      width: ${({ theme }) => theme.space['fluid-inline-space-4'] || '1.25rem'};
       aspect-ratio: 1 / 1;
 
       > * {
@@ -89,8 +101,8 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
 
       span {
         color: #667085;
-        font-size: ${({ fontSize, theme }) =>
-      fontSize || theme['sm-font'] || '1rem'};
+        font-size: ${({ $fontSize, theme }) =>
+      $fontSize || theme.font['sm-font'] || '1rem'};
         font-style: normal;
         font-weight: 400;
         line-height: 1.5rem;
@@ -104,8 +116,8 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
 
     span {
       color: #667085;
-      font-size: ${({ fontSize, theme }) =>
-        fontSize || theme['sm-font'] || '1rem'};
+      font-size: ${({ $fontSize, theme }) =>
+        $fontSize || theme.font['sm-font'] || '1rem'};
       font-style: normal;
       font-weight: 400;
       line-height: 1.5rem;
@@ -122,7 +134,7 @@ export const StyledSelectFieldToggle = styled.div<SelectFieldToggleProps>`
     align-items: center;
     /* width: 1.25rem; */
     /* height: 1.25rem; */
-    width: ${({ theme }) => theme['fluid-inline-space-4'] || '1.25rem'};
+    width: ${({ theme }) => theme.space['fluid-inline-space-4'] || '1.25rem'};
     aspect-ratio: 1 / 1;
     transition: 0.2s ease;
   }
@@ -144,8 +156,8 @@ export const StyledSelectFieldList = styled.div<StyledListProps>`
   opacity: 0;
   transition: 200ms ease;
 
-  ${({ active }) =>
-    active &&
+  ${({ $active }) =>
+    $active &&
     css`
       /* margin-top: 0.5rem; */
       top: calc(100% + 0.5rem);
@@ -176,7 +188,7 @@ export const StyledSelectFieldListItem = styled.div`
     justify-content: space-between;
     width: 100%;
     padding: 0.625rem 0.875rem;
-    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
+    gap: ${({ theme }) => theme.space['fluid-inline-space-1'] || '0.5rem'};
     transition: 0.1s ease;
     cursor: pointer;
 
@@ -188,12 +200,12 @@ export const StyledSelectFieldListItem = styled.div`
   .item-left {
     display: flex;
     align-items: center;
-    gap: ${({ theme }) => theme['fluid-inline-space-1'] || '0.5rem'};
+    gap: ${({ theme }) => theme.space['fluid-inline-space-1'] || '0.5rem'};
 
     .icon {
       /* width: 1.25rem;
       height: 1.25rem; */
-      width: ${({ theme }) => theme['fluid-inline-space-4'] || '1.25rem'};
+      width: ${({ theme }) => theme.space['fluid-inline-space-4'] || '1.25rem'};
       aspect-ratio: 1 / 1;
 
       > * {

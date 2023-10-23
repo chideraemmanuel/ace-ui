@@ -3,14 +3,15 @@ import type { Preview } from '@storybook/react';
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from '../src/components/theme';
+import { GlobalStyles } from '../src/components/globals.styled';
 
-const GlobalStyles = createGlobalStyle`
-  * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-`;
+// const GlobalStyles = createGlobalStyle`
+//   * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+// `;
 
 const preview: Preview = {
   parameters: {

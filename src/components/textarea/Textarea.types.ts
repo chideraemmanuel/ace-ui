@@ -15,6 +15,7 @@ export interface ComponentProps {
     color: string;
   };
   resizable?: false | 'vertical' | 'horizontal' | 'both';
+  color: string;
   maxWidth?: string;
   maxHeight?: string;
   borderRadius?: string;
@@ -35,33 +36,34 @@ export interface ComponentProps {
 }
 
 export interface TextareaLabelProps {
-  color?: string;
-  fontSize?: string;
+  $color?: string;
+  $fontSize?: string;
 }
 
 export interface StyledTextareaProps {
-  error?: boolean;
-  resizable?: false | 'vertical' | 'horizontal' | 'both';
-  maxWidth?: string;
-  maxHeight?: string;
-  borderRadius?: string;
-  border?: string;
-  background?: string;
-  fontSize: string;
+  $error?: boolean;
+  $resizable?: false | 'vertical' | 'horizontal' | 'both';
+  $color: string;
+  $maxWidth?: string;
+  $maxHeight?: string;
+  $borderRadius?: string;
+  $border?: string;
+  $background?: string;
+  $fontSize: string;
   // padding:
-  boxShadow?: string;
-  focus?: {
+  $boxShadow?: string;
+  $focus?: {
     focused: boolean;
     border?: string;
     boxShadowColor?: string;
   };
-  placeholderStyles?: {
+  $placeholderStyles?: {
     color?: string;
   };
 }
 
 export interface TextareaHintProps {
-  error?: boolean;
-  color?: string;
-  fontSize?: string;
+  $error?: boolean;
+  $color?: string;
+  $fontSize?: string;
 }

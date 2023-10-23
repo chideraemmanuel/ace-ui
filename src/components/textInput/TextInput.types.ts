@@ -26,6 +26,7 @@ export interface ComponentProps {
     error?: boolean;
     text: string;
     color?: string;
+    fontSize?: string;
   };
   readOnly?: boolean;
   forgotPassword?: boolean;
@@ -50,20 +51,20 @@ export interface ComponentProps {
 }
 
 export interface TextInputLabelProps {
-  color?: string;
-  fontSize?: string;
+  $color?: string;
+  $fontSize?: string;
 }
 
 export interface StyledTextInputProps {
-  error?: boolean;
-  readOnly?: boolean;
+  $error?: boolean;
+  $readOnly?: boolean;
 
-  borderRadius?: string;
-  border?: string;
-  background?: string;
+  $borderRadius?: string;
+  $border?: string;
+  $background?: string;
   // padding:
-  boxShadow?: string;
-  focus?: {
+  $boxShadow?: string;
+  $focus?: {
     focused: boolean;
     border?: string;
     boxShadowColor?: string;
@@ -71,21 +72,21 @@ export interface StyledTextInputProps {
 }
 
 export interface StyledInputFieldProps {
-  readOnly?: boolean;
-  background?: string;
-  color?: string;
-  fontSize?: string;
-  placeholderStyles?: {
+  $readOnly?: boolean;
+  $background?: string;
+  $color?: string;
+  $fontSize?: string;
+  $placeholderStyles?: {
     color?: string;
   };
 }
 
 export interface TextInputIconProps {
-  color?: string;
+  $color?: string;
 }
 
 export interface TextInputHintProps {
-  error?: boolean;
-  color?: string;
-  fontSize?: string;
+  $error?: boolean;
+  $color?: string;
+  $fontSize?: string;
 }

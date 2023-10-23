@@ -14,6 +14,7 @@ const Textarea: React.FC<ComponentProps> = ({
   placeholder,
   hint,
   resizable = false,
+  color,
   maxWidth,
   maxHeight,
   borderRadius,
@@ -29,18 +30,19 @@ const Textarea: React.FC<ComponentProps> = ({
       <StyledTextareaLabel {...label}>{label?.text}</StyledTextareaLabel>
       <StyledTextarea
         placeholder={placeholder?.text}
-        placeholderStyles={placeholder}
-        resizable={resizable}
-        error={hint.error}
-        maxWidth={maxWidth}
-        maxHeight={maxHeight}
-        borderRadius={borderRadius}
-        border={border}
-        background={background}
-        fontSize={fontSize}
+        $placeholderStyles={placeholder}
+        $resizable={resizable}
+        $color={color}
+        $error={hint.error}
+        $maxWidth={maxWidth}
+        $maxHeight={maxHeight}
+        $borderRadius={borderRadius}
+        $border={border}
+        $background={background}
+        $fontSize={fontSize}
         // padding:
-        boxShadow={boxShadow}
-        focus={focus}
+        $boxShadow={boxShadow}
+        $focus={focus}
       />
       <StyledTextareaHint {...hint}>{hint.text}</StyledTextareaHint>
     </StyledTextareaContainer>

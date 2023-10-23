@@ -7,7 +7,7 @@ export interface ComponentProps {
 }
 
 export interface StyledTooltipProps {
-  arrow?: boolean;
-  background?: string;
-  color?: string;
+  $arrow?: boolean;
+  $background?: string;
+  $color?: string;
 }

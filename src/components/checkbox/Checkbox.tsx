@@ -26,12 +26,12 @@ const Checkbox: FC<ComponentProps> = ({
     <>
       <StyledCheckBoxContainer>
         <StyledCheckbox
-          size={size}
-          variant={variant}
-          background={background}
-          color={color}
-          focus={focus}
-          disabled={disabled}
+          $size={size}
+          $variant={variant}
+          $background={background}
+          $color={color}
+          $focus={focus}
+          $disabled={disabled}
         >
           <input
             type="checkbox"
